@@ -25,7 +25,7 @@ datasource:
   sampleapp:
     url: jdbc:mysql://studentdb.cyp18hr6aper.ap-south-1.rds.amazonaws.com:3306/studentdb
     username: root
-    password: root
+    password: rootroot
     driverClassName: com.mysql.jdbc.Driver
     defaultSchema:
     maxPoolSize: 20
