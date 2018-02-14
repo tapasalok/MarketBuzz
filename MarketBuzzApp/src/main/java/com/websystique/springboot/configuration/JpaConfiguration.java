@@ -32,7 +32,7 @@ import com.zaxxer.hikari.HikariDataSource;
 		transactionManagerRef = "transactionManager")
 @EnableTransactionManagement
 public class JpaConfiguration {
-// This is autowiring
+
 	@Autowired
 	private Environment environment;
 

@@ -21,7 +21,11 @@
 	                     <div class="form-group col-md-12">
 	                        <label class="col-md-2 control-lable" for="callType">Call Type</label>
 	                        <div class="col-md-7">
-	                            <input type="text" ng-model="ctrl.marketTip.callType" id="callType" class="form-control input-sm" placeholder="Enter Call Type (Buy/Sell)" required ng-minlength="3"/>
+	                        <select ng-model="ctrl.marketTip.callType" id="callType" class="form-control input-sm" required ng-maxlength="4">
+							  <option value="" disabled selected>Enter Call Type (Buy/Sell)</option>
+							  <option value="Buy">Buy</option>
+							  <option value="Sell">Sell</option>
+							</select>
 	                        </div>
 	                    </div>
 	                </div>
