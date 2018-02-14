@@ -23,7 +23,7 @@ spring:
   profiles: prod,default
 datasource:
   sampleapp:
-    url: jdbc:mysql://localhost:3306/studentdb
+    url: jdbc:mysql://studentdb.cyp18hr6aper.ap-south-1.rds.amazonaws.com:3306/studentdb
     username: root
     password: root
     driverClassName: com.mysql.jdbc.Driver
