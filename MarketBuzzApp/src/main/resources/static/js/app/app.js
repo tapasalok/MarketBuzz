@@ -1,8 +1,8 @@
 var app = angular.module('crudApp',['ui.router','ngStorage']);
 
 app.constant('urls', {
-    BASE: 'http://localhost:8080/MarketBuzzApp',
-    USER_SERVICE_API : 'http://localhost:8080/MarketBuzzApp/api/marketTip/'
+    BASE: 'http://http://ec2-35-154-161-51.ap-south-1.compute.amazonaws.com:8080/MarketBuzzApp',
+    USER_SERVICE_API : 'http://http://ec2-35-154-161-51.ap-south-1.compute.amazonaws.com:8080/MarketBuzzApp/api/marketTip/'
 });
 
 app.config(['$stateProvider', '$urlRouterProvider',
