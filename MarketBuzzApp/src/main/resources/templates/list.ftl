@@ -21,11 +21,7 @@
 	                     <div class="form-group col-md-12">
 	                        <label class="col-md-2 control-lable" for="callType">Call Type</label>
 	                        <div class="col-md-7">
-	                        <select ng-model="ctrl.marketTip.callType" id="callType" class="form-control input-sm" required ng-maxlength="4">
-							  <option value="" disabled selected>Enter Call Type (Buy/Sell)</option>
-							  <option value="Buy">Buy</option>
-							  <option value="Sell">Sell</option>
-							</select>
+	                            <input type="text" ng-model="ctrl.marketTip.callType" id="callType" class="form-control input-sm" placeholder="Enter Call Type (Buy/Sell)" required ng-minlength="3"/>
 	                        </div>
 	                    </div>
 	                </div>
@@ -106,7 +102,7 @@
 		            </tr>
 		            </thead>
 		            <tbody>
-		            <tr ng-repeat="u in ctrl.getAllMarketTips()">
+		            <tr ng-repeat="u in ctrl.getAllUsers()">
 		                <td>{{u.id}}</td>
 		                <td>{{u.name}}</td>
 	                 	<td>{{u.callType}}</td>
@@ -115,8 +111,8 @@
 		                <td>{{u.stopLoss}}</td>
 		                <td>{{u.duration}}</td>
 		                <td>{{u.callDate}}</td>
-		                <td><button type="button" ng-click="ctrl.editMarketTip(u.id)" class="btn btn-success custom-width">Edit</button></td>
-		                <td><button type="button" ng-click="ctrl.removeMarketTip(u.id)" class="btn btn-danger custom-width">Remove</button></td>
+		                <td><button type="button" ng-click="ctrl.editUser(u.id)" class="btn btn-success custom-width">Edit</button></td>
+		                <td><button type="button" ng-click="ctrl.removeUser(u.id)" class="btn btn-danger custom-width">Remove</button></td>
 		            </tr>
 		            </tbody>
 		        </table>		

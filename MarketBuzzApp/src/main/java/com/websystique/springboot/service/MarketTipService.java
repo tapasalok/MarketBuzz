@@ -11,15 +11,15 @@ public interface MarketTipService {
 
 	MarketTip findByName(String name);
 
-	void saveMarketTip(MarketTip marketTip);
+	void saveUser(MarketTip marketTip);
 
-	void updateMarketTip(MarketTip marketTip);
+	void updateUser(MarketTip marketTip);
 
-	void deleteMarketTipById(Long id);
+	void deleteUserById(Long id);
 
-	void deleteAllMarketTips();
+	void deleteAllUsers();
 
-	List<MarketTip> findAllMarketTips();
+	List<MarketTip> findAllUsers();
 
-	boolean isMarketTipExist(MarketTip marketTip);
+	boolean isUserExist(MarketTip marketTip);
 }

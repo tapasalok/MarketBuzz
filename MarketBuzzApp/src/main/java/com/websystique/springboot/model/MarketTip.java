@@ -140,7 +140,7 @@ public class MarketTip implements Serializable{
 
 	@Override
 	public String toString() {
-		return "MarketTip [id=" + id + ", name=" + name+ ", callType=" + callType + ", triggerPrice=" + triggerPrice
+		return "User [id=" + id + ", name=" + name+ ", callType=" + callType + ", triggerPrice=" + triggerPrice
 				+ ", targetPrice=" + targetPrice + ", stopLoss=" + stopLoss +", duration=" + duration +", callDate=" + callDate +"]";
 	}
 

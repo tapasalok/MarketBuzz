@@ -16,9 +16,9 @@ app.config(['$stateProvider', '$urlRouterProvider',
                 controllerAs:'ctrl',
                 resolve: {
                 	marketTips: function ($q, MarketTipService) {
-                        console.log('Load all marketTips');
+                        console.log('Load all users');
                         var deferred = $q.defer();
-                        MarketTipService.loadAllMarketTips().then(deferred.resolve, deferred.resolve);
+                        MarketTipService.loadAllUsers().then(deferred.resolve, deferred.resolve);
                         return deferred.promise;
                     }
                 }
