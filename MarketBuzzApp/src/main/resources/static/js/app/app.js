@@ -10,7 +10,7 @@ app.config(['$stateProvider', '$urlRouterProvider',
 	    $stateProvider
             .state('home', {
                 url: '/',
-                templateUrl: '/MarketBuzzApp/partials/admin_everything',
+                templateUrl: '/MarketBuzzApp/partials/list',
                 controller:'MarketTipController',
                 controllerAs:'ctrl',
                 resolve: {
