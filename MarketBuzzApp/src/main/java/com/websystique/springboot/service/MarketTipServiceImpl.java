@@ -5,6 +5,7 @@ import java.util.List;
 import com.websystique.springboot.model.MarketTip;
 import com.websystique.springboot.repositories.MarketTipRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -42,11 +43,15 @@ public class MarketTipServiceImpl implements MarketTipService{
 	}
 
 	public List<MarketTip> findAllMarketTips(){
-		return marketTipRepository.findAll();
+		return marketTipRepository.findAll(sortByIdAscDesc());
 	}
 
 	public boolean isMarketTipExist(MarketTip marketTip) {
 		return findByName(marketTip.getName()) != null;
 	}
+	
+	private Sort sortByIdAscDesc() {
+        return new Sort(Sort.Direction.DESC, "id");
+    }
 
 }
