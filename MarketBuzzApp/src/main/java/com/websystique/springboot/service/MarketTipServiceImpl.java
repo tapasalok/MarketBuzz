@@ -25,27 +25,27 @@ public class MarketTipServiceImpl implements MarketTipService{
 		return marketTipRepository.findByName(name);
 	}
 
-	public void saveUser(MarketTip marketTip) {
+	public void saveMarketTip(MarketTip marketTip) {
 		marketTipRepository.save(marketTip);
 	}
 
-	public void updateUser(MarketTip marketTip){
-		saveUser(marketTip);
+	public void updateMarketTip(MarketTip marketTip){
+		saveMarketTip(marketTip);
 	}
 
-	public void deleteUserById(Long id){
+	public void deleteMarketTipById(Long id){
 		marketTipRepository.delete(id);
 	}
 
-	public void deleteAllUsers(){
+	public void deleteAllMarketTips(){
 		marketTipRepository.deleteAll();
 	}
 
-	public List<MarketTip> findAllUsers(){
+	public List<MarketTip> findAllMarketTips(){
 		return marketTipRepository.findAll();
 	}
 
-	public boolean isUserExist(MarketTip marketTip) {
+	public boolean isMarketTipExist(MarketTip marketTip) {
 		return findByName(marketTip.getName()) != null;
 	}
 

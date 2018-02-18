@@ -5,100 +5,100 @@ angular.module('crudApp').factory('MarketTipService',
         function ($localStorage, $http, $q, urls) {
 
             var factory = {
-                loadAllUsers: loadAllUsers,
-                getAllUsers: getAllUsers,
-                getUser: getUser,
-                createUser: createUser,
-                updateUser: updateUser,
-                removeUser: removeUser
+                loadAllMarketTips: loadAllMarketTips,
+                getAllMarketTips: getAllMarketTips,
+                getMarketTip: getMarketTip,
+                createMarketTip: createMarketTip,
+                updateMarketTip: updateMarketTip,
+                removeMarketTip: removeMarketTip
             };
 
             return factory;
 
-            function loadAllUsers() {
-                console.log('Fetching all users');
+            function loadAllMarketTips() {
+                console.log('Fetching all MarketTips');
                 var deferred = $q.defer();
-                $http.get(urls.USER_SERVICE_API)
+                $http.get(urls.MARKET_TIP_SERVICE_API)
                     .then(
                         function (response) {
-                            console.log('Fetched successfully all users');
+                            console.log('Fetched successfully all MarketTips');
                             $localStorage.marketTips = response.data;
                             deferred.resolve(response);
                         },
                         function (errResponse) {
-                            console.error('Error while loading users');
+                            console.error('Error while loading MarketTips');
                             deferred.reject(errResponse);
                         }
                     );
                 return deferred.promise;
             }
 
-            function getAllUsers(){
+            function getAllMarketTips(){
                 return $localStorage.marketTips;
             }
 
-            function getUser(id) {
-                console.log('Fetching User with id :'+id);
+            function getMarketTip(id) {
+                console.log('Fetching MarketTip with id :'+id);
                 var deferred = $q.defer();
-                $http.get(urls.USER_SERVICE_API + id)
+                $http.get(urls.MARKET_TIP_SERVICE_API + id)
                     .then(
                         function (response) {
-                            console.log('Fetched successfully User with id :'+id);
+                            console.log('Fetched successfully MarketTip with id :'+id);
                             deferred.resolve(response.data);
                         },
                         function (errResponse) {
-                            console.error('Error while loading user with id :'+id);
+                            console.error('Error while loading MarketTip with id :'+id);
                             deferred.reject(errResponse);
                         }
                     );
                 return deferred.promise;
             }
 
-            function createUser(marketTip) {
-                console.log('Creating User');
+            function createMarketTip(marketTip) {
+                console.log('Creating MarketTip');
                 var deferred = $q.defer();
-                $http.post(urls.USER_SERVICE_API, marketTip)
+                $http.post(urls.MARKET_TIP_SERVICE_API, marketTip)
                     .then(
                         function (response) {
-                            loadAllUsers();
+                            loadAllMarketTips();
                             deferred.resolve(response.data);
                         },
                         function (errResponse) {
-                           console.error('Error while creating User : '+errResponse.data.errorMessage);
+                           console.error('Error while creating MarketTip : '+errResponse.data.errorMessage);
                            deferred.reject(errResponse);
                         }
                     );
                 return deferred.promise;
             }
 
-            function updateUser(marketTip, id) {
-                console.log('Updating User with id '+id);
+            function updateMarketTip(marketTip, id) {
+                console.log('Updating MarketTip with id '+id);
                 var deferred = $q.defer();
-                $http.put(urls.USER_SERVICE_API + id, marketTip)
+                $http.put(urls.MARKET_TIP_SERVICE_API + id, marketTip)
                     .then(
                         function (response) {
-                            loadAllUsers();
+                            loadAllMarketTips();
                             deferred.resolve(response.data);
                         },
                         function (errResponse) {
-                            console.error('Error while updating User with id :'+id);
+                            console.error('Error while updating MarketTip with id :'+id);
                             deferred.reject(errResponse);
                         }
                     );
                 return deferred.promise;
             }
 
-            function removeUser(id) {
-                console.log('Removing User with id '+id);
+            function removeMarketTip(id) {
+                console.log('Removing MarketTip with id '+id);
                 var deferred = $q.defer();
-                $http.delete(urls.USER_SERVICE_API + id)
+                $http.delete(urls.MARKET_TIP_SERVICE_API + id)
                     .then(
                         function (response) {
-                            loadAllUsers();
+                            loadAllMarketTips();
                             deferred.resolve(response.data);
                         },
                         function (errResponse) {
-                            console.error('Error while removing User with id :'+id);
+                            console.error('Error while removing MarketTip with id :'+id);
                             deferred.reject(errResponse);
                         }
                     );

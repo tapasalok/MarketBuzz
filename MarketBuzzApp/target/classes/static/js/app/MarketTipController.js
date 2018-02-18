@@ -8,11 +8,11 @@ angular.module('crudApp').controller('MarketTipController',
         self.marketTips=[];
 
         self.submit = submit;
-        self.getAllUsers = getAllUsers;
-        self.createUser = createUser;
-        self.updateUser = updateUser;
-        self.removeUser = removeUser;
-        self.editUser = editUser;
+        self.getAllMarketTips = getAllMarketTips;
+        self.createMarketTip = createMarketTip;
+        self.updateMarketTip = updateMarketTip;
+        self.removeMarketTip = removeMarketTip;
+        self.editMarketTip = editMarketTip;
         self.reset = reset;
 
         self.successMessage = '';
@@ -25,17 +25,17 @@ angular.module('crudApp').controller('MarketTipController',
         function submit() {
             console.log('Submitting');
             if (self.marketTip.id === undefined || self.marketTip.id === null) {
-                console.log('Saving New User', self.marketTip);
-                createUser(self.marketTip);
+                console.log('Saving New MarketTip', self.marketTip);
+                createMarketTip(self.marketTip);
             } else {
-                updateUser(self.marketTip, self.marketTip.id);
-                console.log('User updated with id ', self.marketTip.id);
+                updateMarketTip(self.marketTip, self.marketTip.id);
+                console.log('MarketTip updated with id ', self.marketTip.id);
             }
         }
 
-        function createUser(marketTip) {
-            console.log('About to create user');
-            MarketTipService.createUser(marketTip)
+        function createMarketTip(marketTip) {
+            console.log('About to create MarketTip');
+            MarketTipService.createMarketTip(marketTip)
                 .then(
                     function (response) {
                         console.log('Stock inserted successfully');
@@ -54,53 +54,53 @@ angular.module('crudApp').controller('MarketTipController',
         }
 
 
-        function updateUser(marketTip, id){
-            console.log('About to update user');
-            MarketTipService.updateUser(marketTip, id)
+        function updateMarketTip(marketTip, id){
+            console.log('About to update MarketTip');
+            MarketTipService.updateMarketTip(marketTip, id)
                 .then(
                     function (response){
-                        console.log('User updated successfully');
-                        self.successMessage='User updated successfully';
+                        console.log('MarketTip updated successfully');
+                        self.successMessage='MarketTip updated successfully';
                         self.errorMessage='';
                         self.done = true;
                         $scope.myForm.$setPristine();
                     },
                     function(errResponse){
-                        console.error('Error while updating User');
-                        self.errorMessage='Error while updating User '+errResponse.data;
+                        console.error('Error while updating MarketTip');
+                        self.errorMessage='Error while updating MarketTip '+errResponse.data;
                         self.successMessage='';
                     }
                 );
         }
 
 
-        function removeUser(id){
-            console.log('About to remove User with id '+id);
-            MarketTipService.removeUser(id)
+        function removeMarketTip(id){
+            console.log('About to remove MarketTip with id '+id);
+            MarketTipService.removeMarketTip(id)
                 .then(
                     function(){
-                        console.log('User '+id + ' removed successfully');
+                        console.log('MarketTip '+id + ' removed successfully');
                     },
                     function(errResponse){
-                        console.error('Error while removing user '+id +', Error :'+errResponse.data);
+                        console.error('Error while removing MarketTip '+id +', Error :'+errResponse.data);
                     }
                 );
         }
 
 
-        function getAllUsers(){
-            return MarketTipService.getAllUsers();
+        function getAllMarketTips(){
+            return MarketTipService.getAllMarketTips();
         }
 
-        function editUser(id) {
+        function editMarketTip(id) {
             self.successMessage='';
             self.errorMessage='';
-            MarketTipService.getUser(id).then(
+            MarketTipService.getMarketTip(id).then(
                 function (marketTip) {
                     self.marketTip = marketTip;
                 },
                 function (errResponse) {
-                    console.error('Error while removing user ' + id + ', Error :' + errResponse.data);
+                    console.error('Error while removing MarketTip ' + id + ', Error :' + errResponse.data);
                 }
             );
         }

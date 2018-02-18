@@ -28,11 +28,11 @@ public class RestApiController {
 	@Autowired
 	MarketTipService marketTipService; //Service which will do all data retrieval/manipulation work
 
-	// -------------------Retrieve All Users---------------------------------------------
+	// -------------------Retrieve All MarketTips---------------------------------------------
 
 	@RequestMapping(value = "/marketTip/", method = RequestMethod.GET)
-	public ResponseEntity<List<MarketTip>> listAllUsers() {
-		List<MarketTip> marketTips = marketTipService.findAllUsers();
+	public ResponseEntity<List<MarketTip>> listAllMarketTips() {
+		List<MarketTip> marketTips = marketTipService.findAllMarketTips();
 		if (marketTips.isEmpty()) {
 			return new ResponseEntity(HttpStatus.NO_CONTENT);
 			// You many decide to return HttpStatus.NOT_FOUND
@@ -40,42 +40,42 @@ public class RestApiController {
 		return new ResponseEntity<List<MarketTip>>(marketTips, HttpStatus.OK);
 	}
 
-	// -------------------Retrieve Single User------------------------------------------
+	// -------------------Retrieve Single marketTip------------------------------------------
 
 	@RequestMapping(value = "/marketTip/{id}", method = RequestMethod.GET)
-	public ResponseEntity<?> getUser(@PathVariable("id") long id) {
+	public ResponseEntity<?> getMarketTip(@PathVariable("id") long id) {
 		logger.info("Fetching marketTip with id {}", id);
 		MarketTip marketTip = marketTipService.findById(id);
 		if (marketTip == null) {
 			logger.error("marketTip with id {} not found.", id);
-			return new ResponseEntity(new CustomErrorType("User with id " + id 
+			return new ResponseEntity(new CustomErrorType("marketTip with id " + id 
 					+ " not found"), HttpStatus.NOT_FOUND);
 		}
 		return new ResponseEntity<MarketTip>(marketTip, HttpStatus.OK);
 	}
 
-	// -------------------Create a User-------------------------------------------
+	// -------------------Create a marketTip-------------------------------------------
 
 	@RequestMapping(value = "/marketTip/", method = RequestMethod.POST)
-	public ResponseEntity<?> createUser(@RequestBody MarketTip marketTip, UriComponentsBuilder ucBuilder) {
+	public ResponseEntity<?> createMarketTip(@RequestBody MarketTip marketTip, UriComponentsBuilder ucBuilder) {
 		logger.info("Creating marketTip : {}", marketTip);
 
-		if (marketTipService.isUserExist(marketTip)) {
+		if (marketTipService.isMarketTipExist(marketTip)) {
 			logger.error("Unable to create. A marketTip with name {} already exist", marketTip.getName());
-			return new ResponseEntity(new CustomErrorType("Unable to create. A User with name " + 
+			return new ResponseEntity(new CustomErrorType("Unable to create. A marketTip with name " + 
 			marketTip.getName() + " already exist."),HttpStatus.CONFLICT);
 		}
-		marketTipService.saveUser(marketTip);
+		marketTipService.saveMarketTip(marketTip);
 
 		HttpHeaders headers = new HttpHeaders();
 		headers.setLocation(ucBuilder.path("/api/marketTip/{id}").buildAndExpand(marketTip.getId()).toUri());
 		return new ResponseEntity<String>(headers, HttpStatus.CREATED);
 	}
 
-	// ------------------- Update a User ------------------------------------------------
+	// ------------------- Update a marketTip ------------------------------------------------
 
 	@RequestMapping(value = "/marketTip/{id}", method = RequestMethod.PUT)
-	public ResponseEntity<?> updateUser(@PathVariable("id") long id, @RequestBody MarketTip marketTip) {
+	public ResponseEntity<?> updateMarketTip(@PathVariable("id") long id, @RequestBody MarketTip marketTip) {
 		logger.info("Updating marketTip with id {}", id);
 
 		MarketTip marketTipLocal = marketTipService.findById(id);
@@ -94,33 +94,33 @@ public class RestApiController {
 		marketTipLocal.setDuration(marketTip.getDuration());
 		marketTipLocal.setCallDate(marketTip.getCallDate());
 		
-		marketTipService.updateUser(marketTipLocal);
+		marketTipService.updateMarketTip(marketTipLocal);
 		return new ResponseEntity<MarketTip>(marketTipLocal, HttpStatus.OK);
 	}
 
-	// ------------------- Delete a User-----------------------------------------
+	// ------------------- Delete a marketTip-----------------------------------------
 
 	@RequestMapping(value = "/marketTip/{id}", method = RequestMethod.DELETE)
-	public ResponseEntity<?> deleteUser(@PathVariable("id") long id) {
-		logger.info("Fetching & Deleting User with id {}", id);
+	public ResponseEntity<?> deleteMarketTip(@PathVariable("id") long id) {
+		logger.info("Fetching & Deleting marketTip with id {}", id);
 
 		MarketTip marketTip = marketTipService.findById(id);
 		if (marketTip == null) {
 			logger.error("Unable to delete. marketTip with id {} not found.", id);
-			return new ResponseEntity(new CustomErrorType("Unable to delete. User with id " + id + " not found."),
+			return new ResponseEntity(new CustomErrorType("Unable to delete. marketTip with id " + id + " not found."),
 					HttpStatus.NOT_FOUND);
 		}
-		marketTipService.deleteUserById(id);
+		marketTipService.deleteMarketTipById(id);
 		return new ResponseEntity<MarketTip>(HttpStatus.NO_CONTENT);
 	}
 
-	// ------------------- Delete All Users-----------------------------
+	// ------------------- Delete All marketTips-----------------------------
 
 	@RequestMapping(value = "/marketTip/", method = RequestMethod.DELETE)
-	public ResponseEntity<MarketTip> deleteAllUsers() {
-		logger.info("Deleting All Users");
+	public ResponseEntity<MarketTip> deleteAllMarketTips() {
+		logger.info("Deleting All marketTips");
 
-		marketTipService.deleteAllUsers();
+		marketTipService.deleteAllMarketTips();
 		return new ResponseEntity<MarketTip>(HttpStatus.NO_CONTENT);
 	}
 

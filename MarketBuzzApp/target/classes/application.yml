@@ -23,9 +23,9 @@ spring:
   profiles: prod,default
 datasource:
   sampleapp:
-    url: jdbc:mysql://studentdb.c0zhbbvm2hzf.ap-south-1.rds.amazonaws.com:3306/studentdb
+    url: jdbc:mysql://localhost:3306/studentdb
     username: root
-    password: rootroot
+    password: root
     driverClassName: com.mysql.jdbc.Driver
     defaultSchema:
     maxPoolSize: 20
