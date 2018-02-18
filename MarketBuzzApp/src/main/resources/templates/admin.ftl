@@ -22,10 +22,19 @@
 	                        <label class="col-md-2 control-lable" for="callType">Call Type</label>
 	                        <div class="col-md-7">
 	                        <select ng-model="ctrl.marketTip.callType" id="callType" class="form-control input-sm" required ng-maxlength="4">
-							  <option value="" disabled selected>Enter Call Type (Buy/Sell)</option>
+							  <option value="" disabled selected>Select Call Type (Buy/Sell)</option>
 							  <option value="Buy">Buy</option>
-							  <option value="Buy">Sell</option>
+							  <option value="Sell">Sell</option>
 							</select>
+	                        </div>
+	                    </div>
+	                </div>
+					
+					<div class="row">
+	                    <div class="form-group col-md-12">
+	                        <label class="col-md-2 control-lable" for="currentPrice">Current Price</label>
+	                        <div class="col-md-7">
+	                            <input type="text" ng-model="ctrl.marketTip.currentPrice" id="currentPrice" class="form-control input-sm" placeholder="Enter Current Price." required ng-pattern="ctrl.onlyNumbers"/>
 	                        </div>
 	                    </div>
 	                </div>
@@ -74,6 +83,20 @@
 	                        </div>
 	                    </div>
 	                </div>		
+	                
+	                <div class="row">
+	                     <div class="form-group col-md-12">
+	                        <label class="col-md-2 control-lable" for="status">Status</label>
+	                        <div class="col-md-7">
+	                        <select ng-model="ctrl.marketTip.status" id="status" class="form-control input-sm" required ng-minlength="6">
+	                          <option value="" disabled selected>Select Status (Active/Target Met/InActive)</option>
+							  <option value="Active">Active</option>
+							  <option value="Target Met">Target Met</option>
+							  <option value="InActive">InActive</option>
+							</select>
+	                        </div>
+	                    </div>
+	                </div>
 						
 	                <div class="row">
 	                    <div class="form-actions floatRight">
@@ -96,11 +119,14 @@
 		                <th>ID</th>
 		                <th>STOCK NAME</th>
 		                <th>CALL TYPE</th>
+		                 <th>CMP</th>
 		                <th>TRIGGER PRICE</th>
 		                <th>TARGET</th>
 		                 <th>STOP LOSS</th>
+		                 <th>POINTS</th>
 		                  <th>DURATION</th>
-		                   <th>CALL DATE</th>
+	                   	<th>CALL DATE</th>
+	                   	<th>STATUS</th>
 		                <th width="100"></th>
 		                <th width="100"></th>
 		            </tr>
@@ -110,11 +136,14 @@
 		                <td>{{u.id}}</td>
 		                <td>{{u.name}}</td>
 	                 	<td>{{u.callType}}</td>
+		                <td>{{u.currentPrice}}</td>
 		                <td>{{u.triggerPrice}}</td>
 		                <td>{{u.targetPrice}}</td>
 		                <td>{{u.stopLoss}}</td>
+		                <td>{{u.profit}}</td>
 		                <td>{{u.duration}}</td>
 		                <td>{{u.callDate}}</td>
+		                <td>{{u.status}}</td>
 		                <td><button type="button" ng-click="ctrl.editMarketTip(u.id)" class="btn btn-success custom-width">Edit</button></td>
 		                <td><button type="button" ng-click="ctrl.removeMarketTip(u.id)" class="btn btn-danger custom-width">Remove</button></td>
 		            </tr>

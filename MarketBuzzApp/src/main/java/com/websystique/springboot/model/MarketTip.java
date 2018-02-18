@@ -6,36 +6,45 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
-@Table(name="MARKET_TIP")
-public class MarketTip implements Serializable{
+@Table(name = "MARKET_TIP")
+public class MarketTip implements Serializable {
 
 	@Id
-	@GeneratedValue(strategy= GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
 	@NotEmpty
-	@Column(name="NAME", nullable=false)
+	@Column(name = "NAME", nullable = false)
 	private String name;
 
 	@NotEmpty
-	@Column(name="CALLTYPE", nullable=false)
+	@Column(name = "CALLTYPE", nullable = false)
 	private String callType;
-	
-	@Column(name="TRIGGERPRICE", nullable=false)
+
+	@Column(name = "TRIGGERPRICE", nullable = false)
 	private Double triggerPrice;
 
-	@Column(name="TARGETPRICE", nullable=false)
+	@Column(name = "CURRENTPRICE", nullable = false)
+	private Double currentPrice;
+
+	@Column(name = "TARGETPRICE", nullable = false)
 	private Double targetPrice;
 
-	@Column(name="STOPLOSS", nullable=false)
+	@Column(name = "STOPLOSS", nullable = false)
 	private Double stopLoss;
-	
-	@Column(name="DURATION", nullable=false)
+
+	@Column(name = "PROFIT", nullable = true)
+	private Double profit;
+
+	@Column(name = "DURATION", nullable = false)
 	private String duration;
-	
-	@Column(name="CALLDATE", nullable=false)
+
+	@Column(name = "CALLDATE", nullable = false)
 	private String callDate;
-	
+
+	@Column(name = "STATUS", nullable = false)
+	private String status;
+
 	public Long getId() {
 		return id;
 	}
@@ -51,8 +60,7 @@ public class MarketTip implements Serializable{
 	public void setName(String name) {
 		this.name = name;
 	}
-	
-	
+
 	public String getCallType() {
 		return callType;
 	}
@@ -61,11 +69,10 @@ public class MarketTip implements Serializable{
 		this.callType = callType;
 	}
 
-	
 	public void setTriggerPrice(Double triggerPrice) {
 		this.triggerPrice = triggerPrice;
 	}
-	
+
 	public Double getStopLoss() {
 		return stopLoss;
 	}
@@ -93,8 +100,6 @@ public class MarketTip implements Serializable{
 	public void setTargetPrice(Double targetPrice) {
 		this.targetPrice = targetPrice;
 	}
-	
-	
 
 	public Double getTriggerPrice() {
 		return triggerPrice;
@@ -104,21 +109,72 @@ public class MarketTip implements Serializable{
 		return targetPrice;
 	}
 
+	public Double getCurrentPrice() {
+		return currentPrice;
+	}
+
+	public void setCurrentPrice(Double currentPrice) {
+		this.currentPrice = currentPrice;
+	}
+
+	public Double getProfit() {
+		if (getCallType().toLowerCase().contains("sell")) {
+			return (triggerPrice - currentPrice);
+		} else {
+			return (currentPrice - triggerPrice);
+		}
+
+	}
+
+	public void setProfit(Double profit) {
+		if (getCallType().toLowerCase().contains("sell")) {
+			profit = triggerPrice - currentPrice;
+		} else {
+			profit = currentPrice - triggerPrice;
+		}
+
+		this.profit = profit;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
 	@Override
 	public boolean equals(Object o) {
-		if (this == o) return true;
-		if (o == null || getClass() != o.getClass()) return false;
+		if (this == o)
+			return true;
+		if (o == null || getClass() != o.getClass())
+			return false;
 
 		MarketTip marketTip = (MarketTip) o;
 
-		if (Double.compare(marketTip.targetPrice, targetPrice) != 0) return false;
-		if (id != null ? !id.equals(marketTip.id) : marketTip.id != null) return false;
-		if (name != null ? !name.equals(marketTip.name) : marketTip.name != null) return false;
-		if (callType != null ? !callType.equals(marketTip.callType) : marketTip.callType != null) return false;
-		if (triggerPrice != null ? !triggerPrice.equals(marketTip.triggerPrice) : marketTip.triggerPrice != null) return false;
-		if (stopLoss != null ? !stopLoss.equals(marketTip.stopLoss) : marketTip.stopLoss != null) return false;
-		if (duration != null ? !duration.equals(marketTip.duration) : marketTip.duration != null) return false;
-		if (callDate != null ? !callDate.equals(marketTip.callDate) : marketTip.callDate != null) return false;
+		if (Double.compare(marketTip.targetPrice, targetPrice) != 0)
+			return false;
+		if (id != null ? !id.equals(marketTip.id) : marketTip.id != null)
+			return false;
+		if (name != null ? !name.equals(marketTip.name) : marketTip.name != null)
+			return false;
+		if (callType != null ? !callType.equals(marketTip.callType) : marketTip.callType != null)
+			return false;
+		if (triggerPrice != null ? !triggerPrice.equals(marketTip.triggerPrice) : marketTip.triggerPrice != null)
+			return false;
+		if (currentPrice != null ? !currentPrice.equals(marketTip.currentPrice) : marketTip.currentPrice != null)
+			return false;
+		if (profit != null ? !profit.equals(marketTip.profit) : marketTip.profit != null)
+			return false;
+		if (stopLoss != null ? !stopLoss.equals(marketTip.stopLoss) : marketTip.stopLoss != null)
+			return false;
+		if (duration != null ? !duration.equals(marketTip.duration) : marketTip.duration != null)
+			return false;
+		if (callDate != null ? !callDate.equals(marketTip.callDate) : marketTip.callDate != null)
+			return false;
+		if (status != null ? !status.equals(marketTip.status) : marketTip.status != null)
+			return false;
 		return true;
 	}
 
@@ -131,8 +187,11 @@ public class MarketTip implements Serializable{
 		result = 31 * result + (callType != null ? callType.hashCode() : 0);
 		result = 31 * result + (triggerPrice != null ? triggerPrice.hashCode() : 0);
 		result = 31 * result + (stopLoss != null ? stopLoss.hashCode() : 0);
+		result = 31 * result + (currentPrice != null ? currentPrice.hashCode() : 0);
+		result = 31 * result + (profit != null ? profit.hashCode() : 0);
 		result = 31 * result + (duration != null ? duration.hashCode() : 0);
 		result = 31 * result + (callDate != null ? callDate.hashCode() : 0);
+		result = 31 * result + (status != null ? status.hashCode() : 0);
 		temp = Double.doubleToLongBits(targetPrice);
 		result = 31 * result + (int) (temp ^ (temp >>> 32));
 		return result;
@@ -140,9 +199,9 @@ public class MarketTip implements Serializable{
 
 	@Override
 	public String toString() {
-		return "MarketTip [id=" + id + ", name=" + name+ ", callType=" + callType + ", triggerPrice=" + triggerPrice
-				+ ", targetPrice=" + targetPrice + ", stopLoss=" + stopLoss +", duration=" + duration +", callDate=" + callDate +"]";
+		return "MarketTip [id=" + id + ", name=" + name + ", callType=" + callType + ", triggerPrice=" + triggerPrice
+				+ ", currentPrice=" + currentPrice + ", profit=" + profit + ", targetPrice=" + targetPrice
+				+ ", stopLoss=" + stopLoss + ", duration=" + duration + ", callDate=" + callDate + "]";
 	}
-
 
 }

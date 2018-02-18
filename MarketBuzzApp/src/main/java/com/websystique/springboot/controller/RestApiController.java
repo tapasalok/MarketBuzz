@@ -88,11 +88,14 @@ public class RestApiController {
 
 		marketTipLocal.setName(marketTip.getName());
 		marketTipLocal.setTriggerPrice(marketTip.getTriggerPrice());
+		marketTipLocal.setCurrentPrice(marketTip.getCurrentPrice());
+		marketTipLocal.setProfit(marketTip.getProfit());
 		marketTipLocal.setTargetPrice(marketTip.getTargetPrice());
 		marketTipLocal.setCallType(marketTip.getCallType());
 		marketTipLocal.setStopLoss(marketTip.getStopLoss());
 		marketTipLocal.setDuration(marketTip.getDuration());
 		marketTipLocal.setCallDate(marketTip.getCallDate());
+		marketTipLocal.setStatus(marketTip.getStatus());
 		
 		marketTipService.updateMarketTip(marketTipLocal);
 		return new ResponseEntity<MarketTip>(marketTipLocal, HttpStatus.OK);

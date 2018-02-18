@@ -51,7 +51,7 @@ public class MarketTipServiceImpl implements MarketTipService{
 	}
 	
 	private Sort sortByIdAscDesc() {
-        return new Sort(Sort.Direction.DESC, "id");
+        return new Sort(Sort.Direction.DESC, "profit");
     }
 
 }

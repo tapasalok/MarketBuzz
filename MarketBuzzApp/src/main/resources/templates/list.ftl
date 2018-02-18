@@ -9,9 +9,11 @@
 		            <tr>
 		                <th>STOCK NAME</th>
 		                <th>CALL TYPE</th>
+		                <th>CMP</th>
 		                <th>TRIGGER PRICE</th>
 		                <th>TARGET</th>
 		                 <th>STOP LOSS</th>
+		                  <th>POINTS</th>
 		                  <th>DURATION</th>
 		                   <th>CALL DATE</th>
 		                <th width="100"></th>
@@ -22,9 +24,11 @@
 		            <tr ng-repeat="u in ctrl.getAllMarketTips()">
 		                <td>{{u.name}}</td>
 	                 	<td>{{u.callType}}</td>
+	                 	<td>{{u.currentPrice}}</td>
 		                <td>{{u.triggerPrice}}</td>
 		                <td>{{u.targetPrice}}</td>
 		                <td>{{u.stopLoss}}</td>
+		                <td>{{u.profit}}</td>
 		                <td>{{u.duration}}</td>
 		                <td>{{u.callDate}}</td>
 		            </tr>
