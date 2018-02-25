@@ -1,14 +1,16 @@
+'use strict';
+
 var app = angular.module('crudApp',['ui.router','ngStorage']);
 
 app.constant('urls', {
     BASE: 'http://localhost:8080/MarketBuzzApp',
     MARKET_TIP_SERVICE_API : 'http://localhost:8080/MarketBuzzApp/api/marketTip/',
+    MARKET_ACTIVE_TIP_SERVICE_API : 'http://localhost:8080/MarketBuzzApp/api/activeMarketTip/',
 });
 
 app.config(['$stateProvider', '$urlRouterProvider',
     function($stateProvider, $urlRouterProvider) {
-	    $stateProvider
-            .state('home', {
+	    $stateProvider.state('home', {
                 url: '/',
                 templateUrl: '/MarketBuzzApp/partials/admin',
                 controller:'MarketTipController',
@@ -21,6 +23,6 @@ app.config(['$stateProvider', '$urlRouterProvider',
                         return deferred.promise;
                     }
                 }
-            });
+            }) ;
         $urlRouterProvider.otherwise('/');
     }]);

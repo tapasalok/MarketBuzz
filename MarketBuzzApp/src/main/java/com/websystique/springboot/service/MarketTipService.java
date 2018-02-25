@@ -21,5 +21,7 @@ public interface MarketTipService {
 
 	List<MarketTip> findAllMarketTips();
 
+	List<MarketTip> findAllActiveMarketTips();
+	
 	boolean isMarketTipExist(MarketTip marketTip);
 }

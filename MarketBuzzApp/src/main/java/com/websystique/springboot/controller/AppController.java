@@ -18,5 +18,12 @@ public class AppController {
 	String partialHandler(@PathVariable("page") final String page) {
 		return page;
 	}
+	
+	@RequestMapping("/list")
+	String listForUsers(ModelMap modal) {
+		System.out.println("/list AppController");
+		modal.addAttribute("title","Market Buzz");
+		return "/partials/list";
+	}
 
 }

@@ -1,9 +1,16 @@
 package com.websystique.springboot.model;
 
-import org.hibernate.validator.constraints.NotEmpty;
-
-import javax.persistence.*;
 import java.io.Serializable;
+import java.text.DecimalFormat;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 @Table(name = "MARKET_TIP")
@@ -118,21 +125,26 @@ public class MarketTip implements Serializable {
 	}
 
 	public Double getProfit() {
+		Double profitValue = 0.0;
 		if (getCallType().toLowerCase().contains("sell")) {
-			return (triggerPrice - currentPrice);
+			profitValue = ((triggerPrice - currentPrice) / (triggerPrice)) * 100;
 		} else {
-			return (currentPrice - triggerPrice);
+			profitValue = ((currentPrice - triggerPrice) / (triggerPrice)) * 100;
 		}
+		DecimalFormat df = new DecimalFormat("#.##");
+		profitValue = Double.valueOf(df.format(profitValue));
+		return profitValue;
 
 	}
 
 	public void setProfit(Double profit) {
 		if (getCallType().toLowerCase().contains("sell")) {
-			profit = triggerPrice - currentPrice;
+			profit = ((triggerPrice - currentPrice) / (triggerPrice)) * 100;
 		} else {
-			profit = currentPrice - triggerPrice;
+			profit = ((currentPrice - triggerPrice) / (triggerPrice)) * 100;
 		}
-
+		DecimalFormat df = new DecimalFormat("#.##");
+		profit = Double.valueOf(df.format(profit));
 		this.profit = profit;
 	}
 

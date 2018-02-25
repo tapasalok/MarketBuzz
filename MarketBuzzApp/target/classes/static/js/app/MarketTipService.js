@@ -7,6 +7,8 @@ angular.module('crudApp').factory('MarketTipService',
             var factory = {
                 loadAllMarketTips: loadAllMarketTips,
                 getAllMarketTips: getAllMarketTips,
+                loadAllActiveMarketTips: loadAllActiveMarketTips,
+                getAllActiveMarketTips: getAllActiveMarketTips,
                 getMarketTip: getMarketTip,
                 createMarketTip: createMarketTip,
                 updateMarketTip: updateMarketTip,
@@ -32,8 +34,30 @@ angular.module('crudApp').factory('MarketTipService',
                     );
                 return deferred.promise;
             }
+            
+            function loadAllActiveMarketTips() {
+                console.log('Fetching all Active MarketTips');
+                var deferred = $q.defer();
+                $http.get(urls.MARKET_ACTIVE_TIP_SERVICE_API)
+                    .then(
+                        function (response) {
+                            console.log('Fetched successfully all Active MarketTips');
+                            $localStorage.marketTips = response.data;
+                            deferred.resolve(response);
+                        },
+                        function (errResponse) {
+                            console.error('Error while loading Active MarketTips');
+                            deferred.reject(errResponse);
+                        }
+                    );
+                return deferred.promise;
+            }
 
             function getAllMarketTips(){
+                return $localStorage.marketTips;
+            }
+            
+            function getAllActiveMarketTips(){
                 return $localStorage.marketTips;
             }
 

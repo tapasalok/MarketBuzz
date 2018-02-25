@@ -9,6 +9,7 @@ angular.module('crudApp').controller('MarketTipController',
 
         self.submit = submit;
         self.getAllMarketTips = getAllMarketTips;
+        self.getAllActiveMarketTips = getAllActiveMarketTips;
         self.createMarketTip = createMarketTip;
         self.updateMarketTip = updateMarketTip;
         self.removeMarketTip = removeMarketTip;
@@ -91,6 +92,11 @@ angular.module('crudApp').controller('MarketTipController',
         function getAllMarketTips(){
             return MarketTipService.getAllMarketTips();
         }
+        
+        function getAllActiveMarketTips(){
+            return MarketTipService.getAllActiveMarketTips();
+        }
+
 
         function editMarketTip(id) {
             self.successMessage='';

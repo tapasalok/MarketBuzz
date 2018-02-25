@@ -40,6 +40,17 @@ public class RestApiController {
 		return new ResponseEntity<List<MarketTip>>(marketTips, HttpStatus.OK);
 	}
 
+	// -------------------Retrieve All Active MarketTips---------------------------------------------
+	@RequestMapping(value = "/activeMarketTip/", method = RequestMethod.GET)
+	public ResponseEntity<List<MarketTip>> listAllActiveMarketTips() {
+		List<MarketTip> marketTips = marketTipService.findAllActiveMarketTips();
+		if (marketTips.isEmpty()) {
+			return new ResponseEntity(HttpStatus.NO_CONTENT);
+			// You many decide to return HttpStatus.NOT_FOUND
+		}
+		return new ResponseEntity<List<MarketTip>>(marketTips, HttpStatus.OK);
+	}
+	
 	// -------------------Retrieve Single marketTip------------------------------------------
 
 	@RequestMapping(value = "/marketTip/{id}", method = RequestMethod.GET)
@@ -60,11 +71,12 @@ public class RestApiController {
 	public ResponseEntity<?> createMarketTip(@RequestBody MarketTip marketTip, UriComponentsBuilder ucBuilder) {
 		logger.info("Creating marketTip : {}", marketTip);
 
-		if (marketTipService.isMarketTipExist(marketTip)) {
-			logger.error("Unable to create. A marketTip with name {} already exist", marketTip.getName());
-			return new ResponseEntity(new CustomErrorType("Unable to create. A marketTip with name " + 
-			marketTip.getName() + " already exist."),HttpStatus.CONFLICT);
-		}
+//		Removing to add same stocks for multiple Calls
+//		if (marketTipService.isMarketTipExist(marketTip)) {
+//			logger.error("Unable to create. A marketTip with name {} already exist", marketTip.getName());
+//			return new ResponseEntity(new CustomErrorType("Unable to create. A marketTip with name " + 
+//			marketTip.getName() + " already exist."),HttpStatus.CONFLICT);
+//		}
 		marketTipService.saveMarketTip(marketTip);
 
 		HttpHeaders headers = new HttpHeaders();

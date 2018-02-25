@@ -6,6 +6,8 @@ import com.websystique.springboot.model.MarketTip;
 import com.websystique.springboot.repositories.MarketTipRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
+import org.springframework.data.jpa.domain.Specification;
+import org.springframework.data.jpa.domain.Specifications;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -46,12 +48,23 @@ public class MarketTipServiceImpl implements MarketTipService{
 		return marketTipRepository.findAll(sortByIdAscDesc());
 	}
 
+	public List<MarketTip> findAllActiveMarketTips(){
+		return marketTipRepository.findByStatusNotLike("InActive");
+	}
+	
 	public boolean isMarketTipExist(MarketTip marketTip) {
 		return findByName(marketTip.getName()) != null;
 	}
 	
 	private Sort sortByIdAscDesc() {
-        return new Sort(Sort.Direction.DESC, "profit");
+        return new Sort(Sort.Direction.DESC, "callDate");
     }
 
+	public static Specification extendedCarSearch() {
+	    return Specifications.not(containsLike("status", "InActive"));
+	}
+	
+	public static Specification containsLike(String attribute, String value) {
+        return (root, query, cb) -> cb.like(root.get(attribute), "%" + value + "%");
+    }
 }
