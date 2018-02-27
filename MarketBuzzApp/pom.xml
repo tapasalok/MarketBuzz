@@ -6,7 +6,7 @@
 	<artifactId>MarketBuzzApp</artifactId>
 	<version>1.0.0</version>
 	<packaging>jar</packaging>
-
+	<!-- <packaging>war</packaging> -->
 	<name>MarketBuzzApp</name>
 
 	<parent>

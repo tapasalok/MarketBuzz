@@ -116,11 +116,13 @@
 			<div class="table-responsive">
 				<b>Search By</b>
 				</br>
+				</br>
 				STOCK NAME : <input type = "text" ng-model = "marketTip.name">
 				CALL TYPE : <input type = "text" ng-model = "marketTip.callType">
 				DURATION : <input type = "text" ng-model = "marketTip.duration">
 				CALL DATE : <input type = "text" ng-model = "marketTip.callDate">
 				STATUS : <input type = "text" ng-model = "marketTip.status">
+				</br>
 		        <table class="table table-hover">
 		            <thead>
 		            <tr>
