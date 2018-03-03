@@ -6,9 +6,9 @@
 	   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 	   <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Go To Stock</title>
-        <link href="/MarketBuzzApp/css/bootstrap.css" rel="stylesheet"/>
-        <link href="/MarketBuzzApp/css/app.css" rel="stylesheet"/>
-        <link href="/MarketBuzzApp/css/gotostock.css" rel="stylesheet"/>
+        <link href="/css/bootstrap.css" rel="stylesheet"/>
+        <link href="/css/app.css" rel="stylesheet"/>
+        <link href="/css/gotostock.css" rel="stylesheet"/>
         
         <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 		<!-- <script>
@@ -41,20 +41,20 @@
         	The use of this web site is at your own risk.</label>
         </div>
         
-        <script src="/MarketBuzzApp/js/lib/angular.min.js" ></script>
-        <script src="/MarketBuzzApp/js/lib/angular-ui-router.min.js" ></script>
-        <script src="/MarketBuzzApp/js/lib/localforage.min.js" ></script>
-        <script src="/MarketBuzzApp/js/lib/ngStorage.min.js"></script>
-        <script src="/MarketBuzzApp/js/app/app.js"></script>
-        <script src="/MarketBuzzApp/js/app/MarketTipService.js"></script>
-        <script src="/MarketBuzzApp/js/app/MarketTipController.js"></script>
+        <script src="/js/lib/angular.min.js" ></script>
+        <script src="/js/lib/angular-ui-router.min.js" ></script>
+        <script src="/js/lib/localforage.min.js" ></script>
+        <script src="/js/lib/ngStorage.min.js"></script>
+        <script src="/js/app/app.js"></script>
+        <script src="/js/app/MarketTipService.js"></script>
+        <script src="/js/app/MarketTipController.js"></script>
         <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
-        <script src="/MarketBuzzApp/js/app/gotostock.js"></script>
+        <script src="/js/app/gotostock.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.js"></script>
     	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular-route.js"></script>
-    	<!-- <script src="/MarketBuzzApp/js/app/ItemListController.js"></script>
-		<script src="/MarketBuzzApp/js/app/ItemDetailsController.js"></script>
-		<script src="/MarketBuzzApp/js/app/ItemService.js"></script> -->
+    	<!-- <script src="/js/app/ItemListController.js"></script>
+		<script src="/js/app/ItemDetailsController.js"></script>
+		<script src="/js/app/ItemService.js"></script> -->
 		
     </body>
 </html>
