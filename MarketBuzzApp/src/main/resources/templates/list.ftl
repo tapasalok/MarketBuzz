@@ -7,10 +7,14 @@
 				<b style="font-family: 'Oswald', sans-serif;color: #0000FF; size: 30px;">Please type below to Search</b>
 				</br>
 				</br>
-				<b style="font-family: 'Oswald', sans-serif; ">STOCK NAME : <input type = "text" ng-model = "marketTip.name"></b>
-				<b style="font-family: 'Oswald', sans-serif;">CALL TYPE : <input type = "text" ng-model = "marketTip.callType"></b>
-				<b style="font-family: 'Oswald', sans-serif;">DURATION : <input type = "text" ng-model = "marketTip.duration"></b>
-				<b style="font-family: 'Oswald', sans-serif;">CALL DATE : <input type = "text" ng-model = "marketTip.callDate"></b>
+				<b style="font-family: 'Oswald', sans-serif; ">NAME : <input type = "text" ng-model = "marketTip.name"></b>
+				</br>
+				<b style="font-family: 'Oswald', sans-serif;">TYPE : <input type = "text" ng-model = "marketTip.callType"></b>
+				</br>
+				<b style="font-family: 'Oswald', sans-serif;">TIME : <input type = "text" ng-model = "marketTip.duration"></b>
+				</br>
+				<b style="font-family: 'Oswald', sans-serif;">DATE : <input type = "text" ng-model = "marketTip.callDate"></b>
+				</br>
 				<b style="font-family: 'Oswald', sans-serif;">STATUS : <input type = "text" ng-model = "marketTip.status"></b>
 				</br>
 				</br>
@@ -24,19 +28,19 @@
 		                <th>TRIGGER</th>
 		                <th>TARGET</th>
 		                 <th>SL</th>
-		                  <th>PROFIT</th>
+		                  <th>UP/DOWN</th>
 		                  <th>DURATION</th>
 		                   <th>CALL DATE</th>
 		                   <th>STATUS</th>
 		            </tr>
 		            </thead>
 		            <tbody>
-		            <tr ng-repeat="u in ctrl.getAllActiveMarketTips() | filter: marketTip | orderBy:'-profit'">
+		            <tr ng-repeat="u in ctrl.getAllActiveMarketTips() | filter: marketTip | orderBy:'-callDate'">
 		                <td>{{u.name}}</td>
 	                 	<td>{{u.callType}}</td>
-	                 	<td>{{u.currentPrice | limitTo:5}}</td>
-		                <td>{{u.triggerPrice | limitTo:5}}</td>
-		                <td>{{u.targetPrice | limitTo:5}}</td>
+	                 	<td>{{u.currentPrice | limitTo:7}}</td>
+		                <td>{{u.triggerPrice | limitTo:7}}</td>
+		                <td>{{u.targetPrice | limitTo:7}}</td>
 		                <td>{{u.stopLoss | limitTo:5}}</td>
 		                <td>{{u.profit | limitTo:5}}%</td>
 		                <td>{{u.duration}}</td>

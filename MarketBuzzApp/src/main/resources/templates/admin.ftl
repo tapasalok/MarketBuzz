@@ -118,10 +118,15 @@
 				</br>
 				</br>
 				STOCK NAME : <input type = "text" ng-model = "marketTip.name">
+				</br>
 				CALL TYPE : <input type = "text" ng-model = "marketTip.callType">
+				</br>
 				DURATION : <input type = "text" ng-model = "marketTip.duration">
+				</br>
 				CALL DATE : <input type = "text" ng-model = "marketTip.callDate">
+				</br>
 				STATUS : <input type = "text" ng-model = "marketTip.status">
+				</br>
 				</br>
 		        <table class="table table-hover">
 		            <thead>
@@ -133,16 +138,14 @@
 		                <th>TRIGGER</th>
 		                <th>TARGET</th>
 		                 <th>SL</th>
-		                 <th>PROFIT</th>
+		                 <th>UP/DOWN</th>
 		                  <th>DURATION</th>
 	                   	<th>CALL DATE</th>
 	                   	<th>STATUS</th>
-		                <th width="100"></th>
-		                <th width="100"></th>
 		            </tr>
 		            </thead>
 		            <tbody>
-		            <tr ng-repeat="u in ctrl.getAllMarketTips() | filter: marketTip | orderBy:'-profit'">
+		            <tr ng-repeat="u in ctrl.getAllMarketTips() | filter: marketTip | orderBy:'-callDate'">
 		                <td>{{u.id}}</td>
 		                <td>{{u.name}}</td>
 	                 	<td>{{u.callType}}</td>
