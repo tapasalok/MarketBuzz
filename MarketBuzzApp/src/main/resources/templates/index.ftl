@@ -19,7 +19,7 @@
 		</script> -->
     </head>
     <body>
-		<div style="background:  url('/MarketBuzzApp/css/images/background.jpg')">
+		<div style="background:  url('/css/images/background.jpg')">
 		<div >
 		<div class="panel panel-default">
 				<div class="tablecontainer" id='cssmenu'>
