@@ -149,11 +149,19 @@ public class MarketTip implements Serializable {
 	}
 
 	public String getStatus() {
-		return status;
+		String tempStatus = status;
+		if (getCurrentPrice() >= getTargetPrice()) {
+			tempStatus = "Target Met";
+		}
+		return tempStatus;
 	}
 
 	public void setStatus(String status) {
-		this.status = status;
+		String tempStatus = status;
+		if (getCurrentPrice() >= getTargetPrice()) {
+			tempStatus = "Target Met";
+		}
+		this.status = tempStatus;
 	}
 
 	@Override

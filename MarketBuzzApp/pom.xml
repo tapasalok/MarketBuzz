@@ -5,8 +5,8 @@
 	<groupId>com.websystique.springboot</groupId>
 	<artifactId>MarketBuzzApp</artifactId>
 	<version>1.0.0</version>
-	<packaging>jar</packaging>
-	<!-- <packaging>war</packaging> -->
+	<!-- <packaging>jar</packaging> -->
+	<packaging>war</packaging>
 	<name>MarketBuzzApp</name>
 
 	<parent>
@@ -21,12 +21,17 @@
 	</properties>
 
 	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-tomcat</artifactId>
+			<scope>provided</scope>
+		</dependency>
 		<!-- Add typical dependencies for a web application -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
-		<!-- Add freemarker template support -->		
+		<!-- Add freemarker template support -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-freemarker</artifactId>
@@ -47,15 +52,15 @@
 			<artifactId>h2</artifactId>
 			<version>${h2.version}</version>
 		</dependency>
-		<!-- Add MySQL database support [for running with PRODUCTION profile] -->		
+		<!-- Add MySQL database support [for running with PRODUCTION profile] -->
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
 		</dependency>
 		<dependency>
-    		<groupId>org.apache.commons</groupId>
-    		<artifactId>commons-lang3</artifactId>
-    		<version>3.5</version>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>3.5</version>
 		</dependency>
 	</dependencies>
 	<build>
