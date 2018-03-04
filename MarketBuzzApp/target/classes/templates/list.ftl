@@ -7,15 +7,15 @@
 				<b style="font-family: 'Oswald', sans-serif;color: #0000FF; size: 30px;">Please type below to Search</b>
 				</br>
 				</br>
-				<b style="font-family: 'Oswald', sans-serif; ">NAME : <input type = "text" ng-model = "marketTip.name"></b>
+				<b style="font-family: 'Oswald', sans-serif; ">NAME :</b> <input type = "text" style="font-family: 'Oswald', sans-serif;" placeholder="Enter Stock Name" ng-model = "marketTip.name">
 				</br>
-				<b style="font-family: 'Oswald', sans-serif;">TYPE : <input type = "text" ng-model = "marketTip.callType"></b>
+				<b style="font-family: 'Oswald', sans-serif;">TYPE :</b> <input type = "text" style="font-family: 'Oswald', sans-serif;"  placeholder="Enter Buy/Sell" ng-model = "marketTip.callType">
 				</br>
-				<b style="font-family: 'Oswald', sans-serif;">TIME : <input type = "text" ng-model = "marketTip.duration"></b>
+				<b style="font-family: 'Oswald', sans-serif;">TIME :</b> <input type = "text" style="font-family: 'Oswald', sans-serif;" placeholder="Enter Duration (1 Month)" ng-model = "marketTip.duration">
 				</br>
-				<b style="font-family: 'Oswald', sans-serif;">DATE : <input type = "text" ng-model = "marketTip.callDate"></b>
+				<b style="font-family: 'Oswald', sans-serif;">DATE :</b> <input type = "text" style="font-family: 'Oswald', sans-serif;" placeholder="Enter Call Date (1 Feb)" ng-model = "marketTip.callDate">
 				</br>
-				<b style="font-family: 'Oswald', sans-serif;">STATUS : <input type = "text" ng-model = "marketTip.status"></b>
+				<b style="font-family: 'Oswald', sans-serif;">STATUS :</b> <input type = "text" style="font-family: 'Oswald', sans-serif;" placeholder="Active/Target Met" ng-model = "marketTip.status">
 				</br>
 				</br>
 				
