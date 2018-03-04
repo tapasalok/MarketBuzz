@@ -29,26 +29,6 @@
 
 				<div class="row">
 					<div class="form-group col-md-12">
-						<label class="col-md-2 control-lable">DURATION :</label>
-						<div class="col-md-7">
-							<input type="text" ng-model="marketTip.duration"
-								class="form-control input-sm" placeholder="Enter Duration (E.g.: 1 Month)" />
-						</div>
-					</div>
-				</div>
-
-				<div class="row">
-					<div class="form-group col-md-12">
-						<label class="col-md-2 control-lable">CALL DATE :</label>
-						<div class="col-md-7">
-							<input type="text" ng-model="marketTip.callDate"
-								class="form-control input-sm" placeholder="Enter Call Date (E.g.: 1 Feb)" />
-						</div>
-					</div>
-				</div>
-
-				<div class="row">
-					<div class="form-group col-md-12">
 						<label class="col-md-2 control-lable">STATUS :</label>
 						<div class="col-md-7">
 							<input type="text" ng-model="marketTip.status"
