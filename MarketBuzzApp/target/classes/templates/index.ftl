@@ -11,17 +11,17 @@
         <link href="/css/gotostock.css" rel="stylesheet"/>
         
         <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-		<!-- <script>
+		<script>
 		  (adsbygoogle = window.adsbygoogle || []).push({
 		    google_ad_client: "ca-pub-6873581164363568",
 		    enable_page_level_ads: true
 		  });
-		</script> -->
+		</script>
     </head>
     <body>
 		<div style="background:  url('/css/images/background.jpg')">
 		<div >
-		<div class="panel panel-default" style="margin-left: 20px; margin-top: 20px; margin-right: 20px;">
+		<div class="panel panel-default" style="margin-left: 20px; margin-top: 20px; margin-right: 40px;">
 				<div class="tablecontainer" id='cssmenu'>
 					<ul>
 						<li class='active'><a href='#'>Stocks</a></li>
