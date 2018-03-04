@@ -21,7 +21,7 @@
     <body>
 		<div style="background:  url('/css/images/background.jpg')">
 		<div >
-		<div class="panel panel-default" style="margin-left: 20px; margin-top: 20px; margin-right: 40px;">
+		<div class="panel panel-default" style="margin-left: 20px; margin-top: 20px; margin-right: 20px;">
 				<div class="tablecontainer" id='cssmenu'>
 					<ul>
 						<li class='active'><a href='#'>Stocks</a></li>
@@ -37,7 +37,7 @@
 		</div>
 		
         <div>
-        	<label style="color: #000000;">This site has been designed for informational and educational purposes only and does not constitute an offer to sell nor a solicitation of an offer to buy any security which may be referenced upon the site. The services and information provided through this site are for personal, non-commercial, educational use and display. The accuracy, completeness and timeliness of the information contained on this site cannot be guaranteed. We are liable for any harm caused by the transmission, through accessing the services or information on this site, of a computer virus, or other computer code or programming device that might be used to access, delete, damage, disable, disrupt or otherwise impede in any manner, the operation of the site or of any user’s software, hardware, data or property.Investors are advised to take the services of a competent 'Investment Adviser', before making any investment decision.
+        	<label style="color: #000000;margin: 10px;">This site has been designed for informational and educational purposes only and does not constitute an offer to sell nor a solicitation of an offer to buy any security which may be referenced upon the site. The services and information provided through this site are for personal, non-commercial, educational use and display. The accuracy, completeness and timeliness of the information contained on this site cannot be guaranteed. We are liable for any harm caused by the transmission, through accessing the services or information on this site, of a computer virus, or other computer code or programming device that might be used to access, delete, damage, disable, disrupt or otherwise impede in any manner, the operation of the site or of any user’s software, hardware, data or property.Investors are advised to take the services of a competent 'Investment Adviser', before making any investment decision.
         	The use of this web site is at your own risk.</label>
         </div>
         

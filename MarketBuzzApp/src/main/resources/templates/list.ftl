@@ -7,15 +7,55 @@
 				<b style="font-family: 'Oswald', sans-serif;color: #0000FF; size: 30px;">Please type below to Search</b>
 				</br>
 				</br>
-				<b style="font-family: 'Oswald', sans-serif; ">NAME :</b> <input type = "text" style="margin-left:10px; font-family: 'Oswald', sans-serif;" placeholder="Enter Stock Name" ng-model = "marketTip.name">
-				</br>
-				<b style="font-family: 'Oswald', sans-serif;">TYPE :</b> <input type = "text" style="margin-left:10px; font-family: 'Oswald', sans-serif;"  placeholder="Enter Buy/Sell" ng-model = "marketTip.callType">
-				</br>
-				<b style="font-family: 'Oswald', sans-serif;">TIME :</b> <input type = "text" style="margin-left:10px; font-family: 'Oswald', sans-serif;" placeholder="Enter Duration (1 Month)" ng-model = "marketTip.duration">
-				</br>
-				<b style="font-family: 'Oswald', sans-serif;">DATE :</b> <input type = "text" style="margin-left:10px; font-family: 'Oswald', sans-serif;" placeholder="Enter Call Date (1 Feb)" ng-model = "marketTip.callDate">
-				</br>
-				<b style="font-family: 'Oswald', sans-serif;">STATUS :</b> <input type = "text" style="font-family: 'Oswald', sans-serif;" placeholder="Active/Target Met" ng-model = "marketTip.status">
+				<div class="row">
+					<div class="form-group col-md-12">
+						<label class="col-md-2 control-lable">STOCK NAME :</label>
+						<div class="col-md-7">
+							<input type="text" ng-model="marketTip.name"
+								class="form-control input-sm" placeholder="Enter Stock Name" />
+						</div>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="form-group col-md-12">
+						<label class="col-md-2 control-lable">CALL TYPE :</label>
+						<div class="col-md-7">
+							<input type="text" ng-model="marketTip.callType"
+								class="form-control input-sm" placeholder="Enter Buy/Sell" />
+						</div>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="form-group col-md-12">
+						<label class="col-md-2 control-lable">DURATION :</label>
+						<div class="col-md-7">
+							<input type="text" ng-model="marketTip.duration"
+								class="form-control input-sm" placeholder="Enter Duration (E.g.: 1 Month)" />
+						</div>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="form-group col-md-12">
+						<label class="col-md-2 control-lable">CALL DATE :</label>
+						<div class="col-md-7">
+							<input type="text" ng-model="marketTip.callDate"
+								class="form-control input-sm" placeholder="Enter Call Date (E.g.: 1 Feb)" />
+						</div>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="form-group col-md-12">
+						<label class="col-md-2 control-lable">STATUS :</label>
+						<div class="col-md-7">
+							<input type="text" ng-model="marketTip.status"
+								class="form-control input-sm" placeholder="Enter Status (Active/Target Met)" />
+						</div>
+					</div>
+				</div>
 				</br>
 				</br>
 				
