@@ -41,29 +41,29 @@
 		        <table class="table table-hover" id="table_list">
 		            <thead>
 		            <tr>
-		                <th>STOCK NAME</th>
-		                <th>CALL TYPE</th>
+		            	<th>DATE</th>
+		                <th>STOCK</th>
+		                <th>CALL</th>
 		                <th>CMP</th>
-		                <th>TRIGGER</th>
+		                <!-- <th>TRIGGER</th> -->
 		                <th>TARGET</th>
 		                 <th>SL</th>
-		                  <th>UP/DOWN</th>
-		                  <th>DURATION</th>
-		                   <th>CALL DATE</th>
+		                  <th>U/D</th>
+		                  <th>TIME</th>
 		                   <th>STATUS</th>
 		            </tr>
 		            </thead>
 		            <tbody>
 		            <tr ng-repeat="u in ctrl.getAllActiveMarketTips() | filter: marketTip | orderBy:'-callDate'">
+		                <td>{{u.callDate}}</td>
 		                <td>{{u.name}}</td>
 	                 	<td>{{u.callType}}</td>
 	                 	<td>{{u.currentPrice | limitTo:7}}</td>
-		                <td>{{u.triggerPrice | limitTo:7}}</td>
+		                <!-- <td>{{u.triggerPrice | limitTo:7}}</td> -->
 		                <td>{{u.targetPrice | limitTo:7}}</td>
 		                <td>{{u.stopLoss | limitTo:5}}</td>
 		                <td>{{u.profit | limitTo:5}}%</td>
 		                <td>{{u.duration}}</td>
-		                <td>{{u.callDate}}</td>
 		                <td>{{u.status}}</td>
 		            </tr>
 		            </tbody>
