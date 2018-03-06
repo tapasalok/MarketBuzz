@@ -45,7 +45,7 @@
 		                <th>STOCK</th>
 		                <th>CALL</th>
 		                <th>CMP</th>
-		                <!-- <th>TRIGGER</th> -->
+		                <th>PRICE</th>
 		                <th>TARGET</th>
 		                 <th>SL</th>
 		                  <th>U/D</th>
@@ -59,7 +59,7 @@
 		                <td>{{u.name}}</td>
 	                 	<td>{{u.callType}}</td>
 	                 	<td>{{u.currentPrice | limitTo:7}}</td>
-		                <!-- <td>{{u.triggerPrice | limitTo:7}}</td> -->
+		                <td>{{u.triggerPrice | limitTo:7}}</td>
 		                <td>{{u.targetPrice | limitTo:7}}</td>
 		                <td>{{u.stopLoss | limitTo:5}}</td>
 		                <td>{{u.profit | limitTo:5}}%</td>
