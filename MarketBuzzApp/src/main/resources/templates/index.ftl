@@ -21,7 +21,7 @@
     <body>
 		<div style="background:  url('/css/images/background.jpg')">
 		<div >
-		<div class="panel panel-default" style="margin-left: 20px; margin-top: 20px; margin-right: 20px;">
+		<div class="panel panel-default" style="margin-left: 5px; margin-top: 5px; margin-right: 5px;">
 				<div class="tablecontainer" id='cssmenu'>
 					<ul>
 						<li class='active'><a href='#'>Stocks</a></li>

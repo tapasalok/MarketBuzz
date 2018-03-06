@@ -4,7 +4,7 @@
         <div class="panel-heading"><span class="lead">Recommended Stocks </span></div>
 		<div class="panel-body">
 			<div class="table-responsive">
-				<b style="font-family: 'Oswald', sans-serif;color: #0000FF; size: 30px;">Please type below to Search</b>
+				<b style="font-family: 'Oswald', sans-serif;color: #0000FF; size: 30px; padding: 10px;">Please type below to Search</b>
 				</br>
 				</br>
 				<div class="row">
@@ -36,7 +36,6 @@
 						</div>
 					</div>
 				</div>
-				</br>
 				</br>
 				
 		        <table class="table table-hover" id="table_list">
