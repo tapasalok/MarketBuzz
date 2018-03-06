@@ -18,9 +18,9 @@ body, .form-control{
 
 .generic-container {
   width:100%;
-  margin-left: 5px;
-  margin-right: 5px;
-  margin-top: 5px;
+  /* margin-left: 5px;
+  margin-right: 5px; 
+  margin-top: 5px;*/
   margin-bottom: 20px;
   padding: 10px;
  /*  background-color: #EAE7E7; */
