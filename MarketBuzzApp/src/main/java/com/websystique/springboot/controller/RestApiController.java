@@ -54,7 +54,7 @@ public class RestApiController {
 		List<Message> messages = new ArrayList<>();
 		Message message = new Message();
 		message.setId(1L);
-		message.setContent("Save the number (+91-6361059258) to your WhatsApp contacts, and message “REGISTER <YOUR NAME>” to begin receiving Stock updates / tips daily");
+		message.setContent("WhatsApp Message “REGISTER <YOUR NAME>” to number (+91-6361059258) so as to begin receiving Stock updates / tips daily alongwith save the number (+91-6361059258) to your WhatsApp contacts ");
 		
 		messages.add(message);
 		return new ResponseEntity<List<Message>>(messages, HttpStatus.OK);
