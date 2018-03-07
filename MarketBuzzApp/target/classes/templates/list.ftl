@@ -8,11 +8,11 @@
 				<table style="padding-left: 12px" class="table table-hover" id="table_messages">
 		            <tbody>
 		            <tr ng-repeat="u in ctrl.getMessages()">
-		                <td style="font-size: 12px; font-family: 'Oswald', sans-serif; color: #0000FF;">{{u.content}} </td>
+		                <td style="font-size: 11px; font-family: 'Oswald', sans-serif; color: #000000;">{{u.content}} </td>
+		                <div align="center" style="padding-left: 10px" id="link_bar"> <a href="https://api.whatsapp.com/send?phone=916361059258">Click here to message</a> </div>
 		            </tr>
 		            </tbody>
 		        </table>
-				<div align="center" style="padding-left: 10px" id="link_bar"> <a href="https://api.whatsapp.com/send?phone=916361059258">Click here to message</a> </div>
 				
 			<!-- 	<div ng-controller="Hello">
 					<b style="font-family: 'Oswald', sans-serif;color: #0000FF; size: 30px; padding: 10px;">Welcome Go To Stock</b>
