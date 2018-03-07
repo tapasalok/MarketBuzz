@@ -2,6 +2,7 @@ package com.websystique.springboot.service;
 
 
 import com.websystique.springboot.model.MarketTip;
+import com.websystique.springboot.model.Message;
 
 import java.util.List;
 
@@ -21,6 +22,8 @@ public interface MarketTipService {
 
 	List<MarketTip> findAllMarketTips();
 
+	List<Message> getMessages();
+	
 	List<MarketTip> findAllActiveMarketTips();
 	
 	boolean isMarketTipExist(MarketTip marketTip);

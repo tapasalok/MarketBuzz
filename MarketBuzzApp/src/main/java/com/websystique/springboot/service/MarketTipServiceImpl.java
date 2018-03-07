@@ -3,7 +3,10 @@ package com.websystique.springboot.service;
 import java.util.List;
 
 import com.websystique.springboot.model.MarketTip;
+import com.websystique.springboot.model.Message;
 import com.websystique.springboot.repositories.MarketTipRepository;
+import com.websystique.springboot.repositories.MessageRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.domain.Specification;
@@ -20,6 +23,9 @@ public class MarketTipServiceImpl implements MarketTipService{
 	@Autowired
 	private MarketTipRepository marketTipRepository;
 
+	@Autowired
+	private MessageRepository messageRepository;
+	
 	public MarketTip findById(Long id) {
 		return marketTipRepository.findOne(id);
 	}
@@ -48,6 +54,11 @@ public class MarketTipServiceImpl implements MarketTipService{
 		return marketTipRepository.findAll(sortByIdAscDesc());
 	}
 
+	public List<Message> getMessages(){
+		return messageRepository.findAll();
+	}
+
+	
 	public List<MarketTip> findAllActiveMarketTips(){
 		return marketTipRepository.findByStatusNotLike("InActive");
 	}

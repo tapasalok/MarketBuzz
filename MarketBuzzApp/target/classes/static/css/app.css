@@ -4,7 +4,7 @@ body, #mainWrapper {
 }
 
 body, .form-control{
-	font-size:12px!important;
+	font-size:11.5px!important;
 }
 
 .floatRight{
@@ -17,11 +17,12 @@ body, .form-control{
 }
 
 .generic-container {
-  width:95%;
-  margin-left: 20px;
-  margin-top: 20px;
+  width:100%;
+  /* margin-left: 5px;
+  margin-right: 5px; 
+  margin-top: 5px;*/
   margin-bottom: 20px;
-  padding: 20px;
+  padding: 10px;
  /*  background-color: #EAE7E7; */
   opacity: 0.85;
   filter: alpha(opacity=85); /* For IE8 and earlier */

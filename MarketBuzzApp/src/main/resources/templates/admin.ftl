@@ -155,7 +155,7 @@
 		</div>
 		<div class="panel-body">
 			<div class="table-responsive">
-				<b style="font-family: 'Oswald', sans-serif;color: #0000FF; size: 30px;">Please type below to Search</b>
+				<!-- <b style="font-family: 'Oswald', sans-serif;color: #0000FF; size: 30px;">Please type below to Search</b> -->
 				 </br> </br>
 				<div class="row">
 					<div class="form-group col-md-12">

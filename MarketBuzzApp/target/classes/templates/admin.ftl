@@ -155,16 +155,8 @@
 		</div>
 		<div class="panel-body">
 			<div class="table-responsive">
-				<b>Search By</b> </br> </br>
-				<div class="row">
-					<div class="form-group col-md-12">
-						<label class="col-md-2 control-lable">STOCK NAME :</label>
-						<div class="col-md-7">
-							<input type="text" ng-model="marketTip.name"
-								class="form-control input-sm" placeholder="Enter Stock Name" />
-						</div>
-					</div>
-				</div>
+				<!-- <b style="font-family: 'Oswald', sans-serif;color: #0000FF; size: 30px;">Please type below to Search</b> -->
+				 </br> </br>
 				<div class="row">
 					<div class="form-group col-md-12">
 						<label class="col-md-2 control-lable">STOCK NAME :</label>
@@ -180,7 +172,7 @@
 						<label class="col-md-2 control-lable">CALL TYPE :</label>
 						<div class="col-md-7">
 							<input type="text" ng-model="marketTip.callType"
-								class="form-control input-sm" placeholder="Enter Call Type" />
+								class="form-control input-sm" placeholder="Enter Buy/Sell" />
 						</div>
 					</div>
 				</div>
@@ -190,7 +182,7 @@
 						<label class="col-md-2 control-lable">DURATION :</label>
 						<div class="col-md-7">
 							<input type="text" ng-model="marketTip.duration"
-								class="form-control input-sm" placeholder="Enter Duration" />
+								class="form-control input-sm" placeholder="Enter Duration (E.g.: 1 Month)" />
 						</div>
 					</div>
 				</div>
@@ -200,7 +192,7 @@
 						<label class="col-md-2 control-lable">CALL DATE :</label>
 						<div class="col-md-7">
 							<input type="text" ng-model="marketTip.callDate"
-								class="form-control input-sm" placeholder="Enter Call Date" />
+								class="form-control input-sm" placeholder="Enter Call Date (E.g.: 1 Feb)" />
 						</div>
 					</div>
 				</div>
@@ -210,7 +202,7 @@
 						<label class="col-md-2 control-lable">STATUS :</label>
 						<div class="col-md-7">
 							<input type="text" ng-model="marketTip.status"
-								class="form-control input-sm" placeholder="Enter Status" />
+								class="form-control input-sm" placeholder="Enter Status (Active/Target Met)" />
 						</div>
 					</div>
 				</div>

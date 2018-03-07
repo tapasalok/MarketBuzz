@@ -1,5 +1,6 @@
 package com.websystique.springboot.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import com.websystique.springboot.model.MarketTip;
+import com.websystique.springboot.model.Message;
 import com.websystique.springboot.service.MarketTipService;
 import com.websystique.springboot.util.CustomErrorType;
 
@@ -40,6 +42,25 @@ public class RestApiController {
 		return new ResponseEntity<List<MarketTip>>(marketTips, HttpStatus.OK);
 	}
 
+	@RequestMapping(value = "/messages/", method = RequestMethod.GET)
+	public ResponseEntity<List<Message>> getMessages() {
+//		List<Message> messages = marketTipService.getMessages();
+//		if (messages.isEmpty()) {
+//			return new ResponseEntity(HttpStatus.NO_CONTENT);
+//			// You many decide to return HttpStatus.NOT_FOUND
+//		}
+//		return new ResponseEntity<List<Message>>(messages, HttpStatus.OK);
+		logger.info("Called getMessages : ");
+		List<Message> messages = new ArrayList<>();
+		Message message = new Message();
+		message.setId(1L);
+		message.setContent("Save the number (+91-6361059258) to your WhatsApp contacts, and message “REGISTER <YOUR NAME>” to begin receiving Stock updates / tips daily");
+		
+		messages.add(message);
+		return new ResponseEntity<List<Message>>(messages, HttpStatus.OK);
+		 
+	}
+	
 	// -------------------Retrieve All Active MarketTips---------------------------------------------
 	@RequestMapping(value = "/activeMarketTip/", method = RequestMethod.GET)
 	public ResponseEntity<List<MarketTip>> listAllActiveMarketTips() {
@@ -138,5 +159,6 @@ public class RestApiController {
 		marketTipService.deleteAllMarketTips();
 		return new ResponseEntity<MarketTip>(HttpStatus.NO_CONTENT);
 	}
+
 
 }

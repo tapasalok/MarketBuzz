@@ -10,18 +10,18 @@
         <link href="/css/app.css" rel="stylesheet"/>
         <link href="/css/gotostock.css" rel="stylesheet"/>
         
-        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        <!-- <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 		<script>
 		  (adsbygoogle = window.adsbygoogle || []).push({
 		    google_ad_client: "ca-pub-6873581164363568",
 		    enable_page_level_ads: true
 		  });
-		</script>
+		</script> -->
     </head>
     <body>
 		<div style="background:  url('/css/images/background.jpg')">
 		<div >
-		<div class="panel panel-default" style="margin-left: 20px; margin-top: 20px; margin-right: 20px;">
+		<div class="panel panel-default" style="margin-left: 5px; margin-top: 5px; margin-right: 5px;">
 				<div class="tablecontainer" id='cssmenu'>
 					<ul>
 						<li class='active'><a href='#'>Stocks</a></li>
@@ -46,6 +46,7 @@
         <script src="/js/lib/localforage.min.js" ></script>
         <script src="/js/lib/ngStorage.min.js"></script>
         <script src="/js/app/app.js"></script>
+         <script src="/js/app/hello.js"></script>
         <script src="/js/app/MarketTipService.js"></script>
         <script src="/js/app/MarketTipController.js"></script>
         <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>

@@ -7,6 +7,8 @@ angular.module('crudApp').factory('MarketTipService',
             var factory = {
                 loadAllMarketTips: loadAllMarketTips,
                 getAllMarketTips: getAllMarketTips,
+                getAllMessages: getAllMessages,
+                getMessages: getMessages,
                 loadAllActiveMarketTips: loadAllActiveMarketTips,
                 getAllActiveMarketTips: getAllActiveMarketTips,
                 getMarketTip: getMarketTip,
@@ -55,6 +57,28 @@ angular.module('crudApp').factory('MarketTipService',
 
             function getAllMarketTips(){
                 return $localStorage.marketTips;
+            }
+            
+            function getAllMessages(){
+            	 console.log('Fetching all Messages');
+                 var deferred = $q.defer();
+                 $http.get(urls.MESSAGES_SERVICE_API)
+                     .then(
+                         function (response) {
+                             console.log('Fetched successfully all Messages');
+                             $localStorage.messages = response.data;
+                             deferred.resolve(response);
+                         },
+                         function (errResponse) {
+                             console.error('Error while loading Messages');
+                             deferred.reject(errResponse);
+                         }
+                     );
+                 return deferred.promise;
+            }
+            
+            function getMessages(){
+                return $localStorage.messages;
             }
             
             function getAllActiveMarketTips(){
