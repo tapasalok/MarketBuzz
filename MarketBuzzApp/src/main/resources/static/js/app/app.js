@@ -14,7 +14,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
     function($stateProvider, $urlRouterProvider, $locationProvider) {
 	    $stateProvider.state('home', {
                 url: '/',
-                templateUrl: '/partials/admin',
+                templateUrl: '/partials/list',
                 controller:'MarketTipController',
                 controllerAs:'ctrl',
                 resolve: {
