@@ -60,7 +60,7 @@ public class MarketTipServiceImpl implements MarketTipService{
 
 	
 	public List<MarketTip> findAllActiveMarketTips(){
-		return marketTipRepository.findByStatusNotLike("InActive");
+		return marketTipRepository.findByStatusNotLike("InActive", sortByIdAscDesc());
 	}
 	
 	public boolean isMarketTipExist(MarketTip marketTip) {

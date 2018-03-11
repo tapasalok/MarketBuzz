@@ -9,7 +9,7 @@
 		            <tbody>
 		            <tr ng-repeat="u in ctrl.getMessages()">
 		                <td style="font-size: 11px; font-family: 'Oswald', sans-serif; color: #000000;">{{u.content}} </td>
-		                <div align="center" style="padding-left: 10px" id="link_bar"> <a href="https://api.whatsapp.com/send?phone=916361059258">Click here to message</a> </div>
+		                <div align="center" style="padding-left: 10px" id="link_bar"> <a href="https://api.whatsapp.com/send?phone=916361059258">Click here and message to receive Stock updates</a> </div>
 		            </tr>
 		            </tbody>
 		        </table>

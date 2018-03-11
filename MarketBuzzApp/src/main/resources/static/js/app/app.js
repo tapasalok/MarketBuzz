@@ -10,11 +10,11 @@ app.constant('urls', {
 
 });
 
-app.config(['$stateProvider', '$urlRouterProvider',
-    function($stateProvider, $urlRouterProvider) {
+app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
+    function($stateProvider, $urlRouterProvider, $locationProvider) {
 	    $stateProvider.state('home', {
                 url: '/',
-                templateUrl: '/partials/list',
+                templateUrl: '/partials/admin',
                 controller:'MarketTipController',
                 controllerAs:'ctrl',
                 resolve: {
@@ -22,6 +22,34 @@ app.config(['$stateProvider', '$urlRouterProvider',
                         console.log('Load all MarketTips');
                         var deferred = $q.defer();
                         MarketTipService.loadAllActiveMarketTips().then(deferred.resolve, deferred.resolve);
+                        MarketTipService.getAllMessages().then(deferred.resolve, deferred.resolve);
+                        return deferred.promise;
+                    }
+                }
+            }).state('learning', {
+                url: '/learning',
+                templateUrl: '/partials/login',
+                controller:'MarketTipController',
+                controllerAs:'ctrl',
+                resolve: {
+                	marketTips: function ($q, MarketTipService) {
+                        console.log('Load all MarketTips');
+                        var deferred = $q.defer();
+//                        MarketTipService.loadAllActiveMarketTips().then(deferred.resolve, deferred.resolve);
+                        MarketTipService.getAllMessages().then(deferred.resolve, deferred.resolve);
+                        return deferred.promise;
+                    }
+                }
+            }).state('disclaimer', {
+                url: '/disclaimer',
+                templateUrl: '/partials/disclaimer',
+                controller:'MarketTipController',
+                controllerAs:'ctrl',
+                resolve: {
+                	marketTips: function ($q, MarketTipService) {
+                        console.log('Load all MarketTips');
+                        var deferred = $q.defer();
+//                        MarketTipService.loadAllActiveMarketTips().then(deferred.resolve, deferred.resolve);
                         MarketTipService.getAllMessages().then(deferred.resolve, deferred.resolve);
                         return deferred.promise;
                     }

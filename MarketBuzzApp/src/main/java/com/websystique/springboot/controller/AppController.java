@@ -10,12 +10,14 @@ public class AppController {
 
 	@RequestMapping("/")
 	String home(ModelMap modal) {
+		System.out.println("home AppController");
 		modal.addAttribute("title","Market Buzz");
 		return "index";
 	}
 
 	@RequestMapping("/partials/{page}")
 	String partialHandler(@PathVariable("page") final String page) {
+		System.out.println("/partials/{page} AppController");
 		return page;
 	}
 	
