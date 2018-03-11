@@ -5,19 +5,20 @@
 	    <meta charset='utf-8'>
 	   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 	   <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Go To Stock</title>
+        <title>GoToStock</title>
         <link href="/css/bootstrap.css" rel="stylesheet"/>
         <link href="/css/app.css" rel="stylesheet"/>
         <link href="/css/gotostock.css" rel="stylesheet"/>
-        
-        <!-- <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+		<script async
+			src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 		<script>
-		  (adsbygoogle = window.adsbygoogle || []).push({
-		    google_ad_client: "ca-pub-6873581164363568",
-		    enable_page_level_ads: true
-		  });
-		</script> -->
-    </head>
+			(adsbygoogle = window.adsbygoogle || []).push({
+				google_ad_client : "ca-pub-1677486636244083",
+				enable_page_level_ads : true
+			});
+		</script>
+</head>
     <body>
 		<div style="background:  url('/css/images/background.jpg')">
 		<div >
@@ -37,8 +38,7 @@
 		</div>
 		
         <div>
-        	<label style="color: #000000;margin: 10px;">This site has been designed for informational and educational purposes only and does not constitute an offer to sell nor a solicitation of an offer to buy any security which may be referenced upon the site. The services and information provided through this site are for personal, non-commercial, educational use and display. The accuracy, completeness and timeliness of the information contained on this site cannot be guaranteed. We are liable for any harm caused by the transmission, through accessing the services or information on this site, of a computer virus, or other computer code or programming device that might be used to access, delete, damage, disable, disrupt or otherwise impede in any manner, the operation of the site or of any user’s software, hardware, data or property.Investors are advised to take the services of a competent 'Investment Adviser', before making any investment decision.
-        	The use of this web site is at your own risk.</label>
+        	<label style="color: #000000;margin: 10px;">This site has been designed for informational and educational purposes only and does not constitute an offer to sell nor a solicitation of an offer to buy any security / stocks which may be referenced upon the web site. The services and information provided through this web site are for personal, non-commercial, educational use and display. The accuracy, completeness and timeliness of the information contained on this site cannot be guaranteed. We don’t give promise of any sure income/return/profit as intraday trading can be risky too. Nobody can be 100% Sure in the share market. Only Intraday Tips is not responsible for any losses incurred by acting on the our recommendations or our view. You should be aware of risk in trading using our recommendations (share tips services). Investors are advised to take the services of a competent 'Investment Adviser', before making any investment decision. The targets expressed are based on technical and fundamental analysis and does not guarantee success. The use of this app is at your own risk. *GoToStock* is not responsible for any losses. All data and details given are for educational purpose only.</label>
         </div>
         
         <script src="/js/lib/angular.min.js" ></script>
