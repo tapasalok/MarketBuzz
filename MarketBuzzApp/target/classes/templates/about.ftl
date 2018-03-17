@@ -30,7 +30,6 @@
 				<label style="color: #2b4b83; font-size:20px; font-weight:normal;">GoToStock is live now in both Web and Mobile (Android) version</label>
 				</br>
 				<label style="color: #2b8341; font-size:20px; font-weight:bold">Web URL:</label>
-				</br>
 				<a style="color: #2b8341; font-size:20px; font-weight:normal;" href="http://www.gotostock.club">http://www.gotostock.club</a>
 				</br>
 				</br>

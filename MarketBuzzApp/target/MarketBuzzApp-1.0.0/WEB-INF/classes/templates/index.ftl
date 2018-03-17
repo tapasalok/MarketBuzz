@@ -29,8 +29,8 @@
 						<li class='active'><a href='#'>Home</a></li>
 						<!-- <li><a href='#/learning'>Learning</a></li> -->
 						<li><a href='#/tutorial'>Tutorial</a></li>
-						<li><a href='#/analysis'>Analysis</a></li>
-						<li><a href='#/multibagger'>Multibagger Stocks</a></li>
+						<!-- <li><a href='#/analysis'>Analysis</a></li>
+						<li><a href='#/multibagger'>Multibagger Stocks</a></li> -->
 						<li><a href='#/about'>About</a></li>
 						<li><a href='#/disclaimer'>Disclaimer</a></li>
 					</ul>

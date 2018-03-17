@@ -11,7 +11,7 @@
 				  <li style="color: #2b8341; font-size:20px; font-weight:normal;">Visit the mobile App in the morning to check if new tips are added.</li>
 				  <li style="color: #2b4b83; font-size:20px; font-weight:normal;">For Intraday traders: Usually Tips are added at 10:00 AM IST after looking into the Market Trend</li>
 				  <li style="color: #2b4b83; font-size:20px; font-weight:normal;">Investors can search with duration for which they want to invest</li>
-				  <li style="color: #2b4b83; font-size:20px; font-weight:normal;">Make use of Notification which comes whenever new important Tips are added in the App</li>
+				  <li style="color: #2b8341; font-size:20px; font-weight:normal;">Make use of Notification which comes whenever new important Tips are added in the App</li>
 				  
 				  
 				  <li style="color: #2b4b83; font-size:20px; font-weight:bold;">Get added to the WhatsApp and Telegram Link by clicking on the below link so as to get the updates on the spot</li>
