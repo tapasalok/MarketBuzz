@@ -26,6 +26,20 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
                         return deferred.promise;
                     }
                 }
+            }).state('tutorial', {
+                url: '/tutorial',
+                templateUrl: '/partials/tutorial',
+                controller:'MarketTipController',
+                controllerAs:'ctrl',
+                resolve: {
+                	marketTips: function ($q, MarketTipService) {
+                        console.log('Load all MarketTips');
+                        var deferred = $q.defer();
+//                        MarketTipService.loadAllActiveMarketTips().then(deferred.resolve, deferred.resolve);
+                        MarketTipService.getAllMessages().then(deferred.resolve, deferred.resolve);
+                        return deferred.promise;
+                    }
+                }
             }).state('learning', {
                 url: '/learning',
                 templateUrl: '/partials/login',

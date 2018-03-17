@@ -5,8 +5,8 @@
 			<span class="lead">Disclaimer</span>
 		</div>
 		<div class="panel-body">
-			<div class="table-responsive" style="padding: 25px">
-				<label style="color:  #ba8f8f; margin: 10px;">This site has
+			<div class="table-responsive" style="padding: 25px; font-weight:normal">
+				<label style="color:  #ba8f8f; margin: 10px; font-weight:normal">This site has
 					been designed for informational and educational purposes only and
 					does not constitute an offer to sell nor a solicitation of an offer
 					to buy any security / stocks which may be referenced upon the web
@@ -28,7 +28,7 @@
 					
 					</br>
 					</br>
-					<label style="color:#827272; margin: 10px;">For any further queries, please mail us at gotostocks@gmail.com</label>
+					<label style="color:#827272; margin: 10px; font-weight:normal">For any further queries, please mail us at gotostocks@gmail.com</label>
 			</div>
 		</div>
 	</div>

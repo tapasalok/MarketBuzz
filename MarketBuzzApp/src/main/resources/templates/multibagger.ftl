@@ -2,7 +2,7 @@
 	<div class="panel panel-default">
 		<!-- Default panel contents -->
 		<div class="panel-heading">
-			<span class="lead">Disclaimer</span>
+			<span class="lead">Multibagger Stocks</span>
 		</div>
 		<div class="panel-body">
 			<div class="table-responsive" style="padding: 25px">

@@ -26,10 +26,11 @@
 				style="margin-left: 5px; margin-top: 5px; margin-right: 5px;">
 				<div class="tablecontainer" id='cssmenu'>
 					<ul>
-						<li class='active'><a href='#'>Stocks</a></li>
+						<li class='active'><a href='#'>Home</a></li>
 						<!-- <li><a href='#/learning'>Learning</a></li> -->
-						<li><a href='#/analysis'>Analysis</a></li>
-						<li><a href='#/multibagger'>Multibagger Stocks</a></li>
+						<li><a href='#/tutorial'>Tutorial</a></li>
+						<!-- <li><a href='#/analysis'>Analysis</a></li>
+						<li><a href='#/multibagger'>Multibagger Stocks</a></li> -->
 						<li><a href='#/about'>About</a></li>
 						<li><a href='#/disclaimer'>Disclaimer</a></li>
 					</ul>

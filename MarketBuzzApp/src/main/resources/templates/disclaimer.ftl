@@ -6,7 +6,7 @@
 		</div>
 		<div class="panel-body">
 			<div class="table-responsive" style="padding: 25px; font-weight:normal">
-				<label style="color:  #ba8f8f; margin: 10px; font: normal;">This site has
+				<label style="color:  #ba8f8f; margin: 10px; font-weight:normal">This site has
 					been designed for informational and educational purposes only and
 					does not constitute an offer to sell nor a solicitation of an offer
 					to buy any security / stocks which may be referenced upon the web

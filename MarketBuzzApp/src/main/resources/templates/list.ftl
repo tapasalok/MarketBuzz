@@ -1,7 +1,12 @@
 <div class="generic-container">
     <div class="panel panel-default">
         <!-- Default panel contents -->
-        <div class="panel-heading"><span class="lead">Recommended Stocks </span></div>
+        <div class="panel-heading"><span class="lead">GoToStock</span></div>
+        <ul style="color:#2b8341; font-size:16px; margin: 10px; font-weight:bold;">
+		  <li>Daily INTRADAY Calls For Traders</li>
+		  <li>MULTIBAGGER Stock Ideas For Investors</li>
+		</ul>  
+        
 		<div class="panel-body">
 			<div class="table-responsive">
 				
