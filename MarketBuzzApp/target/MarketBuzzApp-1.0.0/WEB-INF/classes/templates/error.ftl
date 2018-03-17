@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
     <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
-    	<script async
+    <!--	<script async
 			src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 		<script>
 			(adsbygoogle = window.adsbygoogle || []).push({
@@ -11,6 +11,7 @@
 				enable_page_level_ads : true
 			});
 		</script>
+	-->
 </head>
 <body>
 	<div class="container">
