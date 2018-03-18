@@ -1,7 +1,7 @@
 <div class="generic-container">
     <div class="panel panel-default">
         <!-- Default panel contents -->
-        <div class="panel-heading"><span class="lead">GoToStock</span></div>
+        <div class="panel-heading"><span class="lead">GoToStock (Happy Investment. Happy Trading!)</span></div>
         <ul style="color:#2b8341; font-size:16px; margin: 10px; font-weight:bold;">
 		  <li>Daily INTRADAY Calls For Traders</li>
 		  <li>MULTIBAGGER Stock Ideas For Investors</li>
@@ -13,8 +13,8 @@
 				<table style="padding-left: 12px" class="table table-hover" id="table_messages">
 		            <tbody>
 		            <tr ng-repeat="u in ctrl.getMessages()">
-		                <td style="font-size: 12px;color: #000000; font-weight:normal">{{u.content}} </td>
-		                <div align="center" style="padding-left: 10px" id="link_bar"> <a href="https://api.whatsapp.com/send?phone=916361059258">Click here and message to receive Stock updates</a> </div>
+		                <td style="font-size: 12px;color: #2b8341; font-weight:normal; padding-left: 12px;">{{u.content}} </td>
+		                <div align="center" style="padding-left: 14px" id="link_bar"> <a href="https://api.whatsapp.com/send?phone=916361059258&text=REGISTER">Click here and message to receive Stock updates</a> </div>
 		            </tr>
 		            </tbody>
 		        </table>
@@ -55,8 +55,7 @@
 						</div>
 					</div>
 				</div>
-				</br>
-				
+				<div style="padding-left: 12px"><span style="font-size: 20px;">Recommended Stocks</span></div>
 		        <table class="table table-hover" id="table_list">
 		            <thead>
 		            <tr>
