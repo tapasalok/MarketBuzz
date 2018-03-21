@@ -14,10 +14,12 @@
 		            <tbody>
 		            <tr ng-repeat="u in ctrl.getMessages()">
 		                <td style="font-size: 12px;color: #2b8341; font-weight:normal; padding-left: 12px;">{{u.content}} </td>
-		                <div align="center" style="padding-left: 14px" id="link_bar"> <a href="https://api.whatsapp.com/send?phone=916361059258&text=REGISTER">Click here and message to receive Stock updates</a> </div>
+		                <div align="center" style="padding-left: 14px" id="link_bar"> <a href="https://api.whatsapp.com/send?phone=916361059258&text=REGISTERWEB">Click here and message to receive Stock updates</a> </div>
 		            </tr>
 		            </tbody>
 		        </table>
+				
+				<label class="col-md-2 control-lable">*Note: Only members who have added number (+91-6361059258) to their phone's address book will receive broadcast message.</label>
 				
 			<!-- 	<div ng-controller="Hello">
 					<b style="font-family: 'Oswald', sans-serif;color: #0000FF; size: 30px; padding: 10px;">Welcome Go To Stock</b>

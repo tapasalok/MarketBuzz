@@ -6,7 +6,7 @@
 		</div>
 		<div class="panel-body">
 			<div class="table-responsive" style="padding: 25px">
-				<label style="color: #2b4b83; font-size:20px; font-weight:normal;">HAPPY INVESTMENT AND TRADING!</label>
+				<label style="color: #2b4b83; font-size:20px; font-weight:normal;">HAPPY INVESTMENT. HAPPY TRADING!</label>
 				<div><span style=" font-size:20px;">GoToStock is Web and Android mobile App which provides:</span></div>
 		        <ul style="color:#2b8341; font-size:20px; margin: 10px; font-weight:normal;">
 				  <li>Daily INTRADAY Calls For Traders</li>
