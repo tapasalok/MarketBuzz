@@ -19,8 +19,8 @@
 		            </tbody>
 		        </table>
 				
-				<label class="col-md-2 control-lable">*Note: Only members who have added number (+91-6361059258) to their phone's address book will receive broadcast message.</label>
-				
+				<label style="padding-left:12px;" class="control-lable">*Note: Only members who have added number (+91-6361059258) to their phone's address book will receive broadcast message.</label>
+				</br>
 			<!-- 	<div ng-controller="Hello">
 					<b style="font-family: 'Oswald', sans-serif;color: #0000FF; size: 30px; padding: 10px;">Welcome Go To Stock</b>
 					<p>The ID is {{greeting.id}}</p>

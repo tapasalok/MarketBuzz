@@ -6,15 +6,20 @@ angular.module('crudApp').factory('MarketTipService',
 
             var factory = {
                 loadAllMarketTips: loadAllMarketTips,
+                loadAllMessages: loadAllMessages,
                 getAllMarketTips: getAllMarketTips,
                 getAllMessages: getAllMessages,
                 getMessages: getMessages,
                 loadAllActiveMarketTips: loadAllActiveMarketTips,
                 getAllActiveMarketTips: getAllActiveMarketTips,
                 getMarketTip: getMarketTip,
+                getMessage: getMessage,
+                createMessage: createMessage,
                 createMarketTip: createMarketTip,
                 updateMarketTip: updateMarketTip,
-                removeMarketTip: removeMarketTip
+                updateMessage: updateMessage,
+                removeMarketTip: removeMarketTip,
+                removeMessage: removeMessage
             };
 
             return factory;
@@ -59,22 +64,27 @@ angular.module('crudApp').factory('MarketTipService',
                 return $localStorage.marketTips;
             }
             
+            
+            function loadAllMessages(){
+           	 console.log('Fetching all Messages');
+                var deferred = $q.defer();
+                $http.get(urls.MESSAGES_SERVICE_API)
+                    .then(
+                        function (response) {
+                            console.log('Fetched successfully all Messages');
+                            $localStorage.messages = response.data;
+                            deferred.resolve(response);
+                        },
+                        function (errResponse) {
+                            console.error('Error while loading Messages');
+                            deferred.reject(errResponse);
+                        }
+                    );
+                return deferred.promise;
+           }
+            
             function getAllMessages(){
-            	 console.log('Fetching all Messages');
-                 var deferred = $q.defer();
-                 $http.get(urls.MESSAGES_SERVICE_API)
-                     .then(
-                         function (response) {
-                             console.log('Fetched successfully all Messages');
-                             $localStorage.messages = response.data;
-                             deferred.resolve(response);
-                         },
-                         function (errResponse) {
-                             console.error('Error while loading Messages');
-                             deferred.reject(errResponse);
-                         }
-                     );
-                 return deferred.promise;
+            	return $localStorage.messages;
             }
             
             function getMessages(){
@@ -85,6 +95,24 @@ angular.module('crudApp').factory('MarketTipService',
                 return $localStorage.marketTips;
             }
 
+            
+            function getMessage(id) {
+                console.log('Fetching Message with id :'+id);
+                var deferred = $q.defer();
+                $http.get(urls.MESSAGES_SERVICE_API + id)
+                    .then(
+                        function (response) {
+                            console.log('Fetched successfully Message with id :'+id);
+                            deferred.resolve(response.data);
+                        },
+                        function (errResponse) {
+                            console.error('Error while loading Message with id :'+id);
+                            deferred.reject(errResponse);
+                        }
+                    );
+                return deferred.promise;
+            }
+            
             function getMarketTip(id) {
                 console.log('Fetching MarketTip with id :'+id);
                 var deferred = $q.defer();
@@ -119,6 +147,40 @@ angular.module('crudApp').factory('MarketTipService',
                 return deferred.promise;
             }
 
+            function createMessage(messsage) {
+                console.log('Creating Message');
+                var deferred = $q.defer();
+                $http.post(urls.MESSAGES_SERVICE_API, messsage)
+                    .then(
+                        function (response) {
+                            loadAllMessages();
+                            deferred.resolve(response.data);
+                        },
+                        function (errResponse) {
+                           console.error('Error while creating Message : '+errResponse.data.errorMessage);
+                           deferred.reject(errResponse);
+                        }
+                    );
+                return deferred.promise;
+            }
+            
+            function updateMessage(messsage, id) {
+                console.log('Updating Message with id '+id);
+                var deferred = $q.defer();
+                $http.put(urls.MESSAGES_SERVICE_API + id, messsage)
+                    .then(
+                        function (response) {
+                        	loadAllMessages();
+                            deferred.resolve(response.data);
+                        },
+                        function (errResponse) {
+                            console.error('Error while updating Message with id :'+id);
+                            deferred.reject(errResponse);
+                        }
+                    );
+                return deferred.promise;
+            }
+
             function updateMarketTip(marketTip, id) {
                 console.log('Updating MarketTip with id '+id);
                 var deferred = $q.defer();
@@ -136,6 +198,7 @@ angular.module('crudApp').factory('MarketTipService',
                 return deferred.promise;
             }
 
+            
             function removeMarketTip(id) {
                 console.log('Removing MarketTip with id '+id);
                 var deferred = $q.defer();
@@ -147,6 +210,23 @@ angular.module('crudApp').factory('MarketTipService',
                         },
                         function (errResponse) {
                             console.error('Error while removing MarketTip with id :'+id);
+                            deferred.reject(errResponse);
+                        }
+                    );
+                return deferred.promise;
+            }
+            
+            function removeMessage(id) {
+                console.log('Removing Message with id '+id);
+                var deferred = $q.defer();
+                $http.delete(urls.MESSAGES_SERVICE_API + id)
+                    .then(
+                        function (response) {
+                        	loadAllMessages();
+                            deferred.resolve(response.data);
+                        },
+                        function (errResponse) {
+                            console.error('Error while removing Message with id :'+id);
                             deferred.reject(errResponse);
                         }
                     );

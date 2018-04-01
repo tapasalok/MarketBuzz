@@ -44,20 +44,22 @@ public class RestApiController {
 
 	@RequestMapping(value = "/messages/", method = RequestMethod.GET)
 	public ResponseEntity<List<Message>> getMessages() {
-//		List<Message> messages = marketTipService.getMessages();
-//		if (messages.isEmpty()) {
-//			return new ResponseEntity(HttpStatus.NO_CONTENT);
-//			// You many decide to return HttpStatus.NOT_FOUND
-//		}
-//		return new ResponseEntity<List<Message>>(messages, HttpStatus.OK);
-		logger.info("Called getMessages : ");
-		List<Message> messages = new ArrayList<>();
-		Message message = new Message();
-		message.setId(1L);
-		message.setContent("Send WhatsApp Message “REGISTER <YOUR NAME>” to number (+91-6361059258) to receieve Stock updates / tips daily. ");
-		
-		messages.add(message);
+		List<Message> messages = marketTipService.getMessages();
+		if (messages.isEmpty()) {
+			return new ResponseEntity(HttpStatus.NO_CONTENT);
+			// You many decide to return HttpStatus.NOT_FOUND
+		}
 		return new ResponseEntity<List<Message>>(messages, HttpStatus.OK);
+		
+		
+//		logger.info("Called getMessages : ");
+//		List<Message> messages = new ArrayList<>();
+//		Message message = new Message();
+//		message.setId(1L);
+//		message.setContent("Send WhatsApp Message “REGISTER <YOUR NAME>” to number (+91-6361059258) to receive Stock updates / tips daily. ");
+//		
+//		messages.add(message);
+//		return new ResponseEntity<List<Message>>(messages, HttpStatus.OK);
 		 
 	}
 	
@@ -71,6 +73,39 @@ public class RestApiController {
 		}
 		return new ResponseEntity<List<MarketTip>>(marketTips, HttpStatus.OK);
 	}
+	
+	// -------------------Retrieve All Short Term MarketTips---------------------------------------------
+		@RequestMapping(value = "/shortMarketTip/", method = RequestMethod.GET)
+		public ResponseEntity<List<MarketTip>> listAllShortMarketTips() {
+			List<MarketTip> marketTips = marketTipService.finalAllByCallType("Short Term Buy");
+			if (marketTips.isEmpty()) {
+				return new ResponseEntity(HttpStatus.NO_CONTENT);
+				// You many decide to return HttpStatus.NOT_FOUND
+			}
+			return new ResponseEntity<List<MarketTip>>(marketTips, HttpStatus.OK);
+		}
+		
+	// -------------------Retrieve All Long Term MarketTips---------------------------------------------
+		@RequestMapping(value = "/longMarketTip/", method = RequestMethod.GET)
+		public ResponseEntity<List<MarketTip>> listAllLongMarketTips() {
+			List<MarketTip> marketTips = marketTipService.finalAllByCallType("Long Term Buy");
+			if (marketTips.isEmpty()) {
+				return new ResponseEntity(HttpStatus.NO_CONTENT);
+				// You many decide to return HttpStatus.NOT_FOUND
+			}
+			return new ResponseEntity<List<MarketTip>>(marketTips, HttpStatus.OK);
+		}
+		
+		// -------------------Retrieve All Short Term MarketTips---------------------------------------------
+		@RequestMapping(value = "/multibaggerMarketTip/", method = RequestMethod.GET)
+		public ResponseEntity<List<MarketTip>> listAllMultiBaggerMarketTips() {
+			List<MarketTip> marketTips = marketTipService.finalAllByCallType("Multibagger Buy");
+			if (marketTips.isEmpty()) {
+				return new ResponseEntity(HttpStatus.NO_CONTENT);
+				// You many decide to return HttpStatus.NOT_FOUND
+			}
+			return new ResponseEntity<List<MarketTip>>(marketTips, HttpStatus.OK);
+		}
 	
 	// -------------------Retrieve Single marketTip------------------------------------------
 
@@ -86,6 +121,77 @@ public class RestApiController {
 		return new ResponseEntity<MarketTip>(marketTip, HttpStatus.OK);
 	}
 
+	// -------------------Create a Message-------------------------------------------
+	
+	@RequestMapping(value = "/messages/", method = RequestMethod.POST)
+	public ResponseEntity<?> createMessage(@RequestBody Message message, UriComponentsBuilder ucBuilder) {
+		logger.info("Creating message : {}", message);
+
+//		Removing to add same stocks for multiple Calls
+//		if (marketTipService.isMarketTipExist(marketTip)) {
+//			logger.error("Unable to create. A marketTip with name {} already exist", marketTip.getName());
+//			return new ResponseEntity(new CustomErrorType("Unable to create. A marketTip with name " + 
+//			marketTip.getName() + " already exist."),HttpStatus.CONFLICT);
+//		}
+		marketTipService.saveMessage(message);
+
+		HttpHeaders headers = new HttpHeaders();
+		headers.setLocation(ucBuilder.path("/api/messages/{id}").buildAndExpand(message.getId()).toUri());
+		return new ResponseEntity<String>(headers, HttpStatus.CREATED);
+	}
+	
+	// -------------------Retrieve Single message------------------------------------------
+
+		@RequestMapping(value = "/messages/{id}", method = RequestMethod.GET)
+		public ResponseEntity<?> getMessage(@PathVariable("id") long id) {
+			logger.info("Fetching Message with id {}", id);
+			Message message = marketTipService.findMessageById(id);
+			if (message == null) {
+				logger.error("message with id {} not found.", id);
+				return new ResponseEntity(new CustomErrorType("message with id " + id 
+						+ " not found"), HttpStatus.NOT_FOUND);
+			}
+			return new ResponseEntity<Message>(message, HttpStatus.OK);
+		}
+	
+		
+		// ------------------- Update a message ------------------------------------------------
+
+		@RequestMapping(value = "/messages/{id}", method = RequestMethod.PUT)
+		public ResponseEntity<?> updateMessage(@PathVariable("id") long id, @RequestBody Message message) {
+			logger.info("Updating marketTip with id {}", id);
+
+			Message messageLocal = marketTipService.findMessageById(id);
+
+			if (messageLocal == null) {
+				logger.error("Unable to update. Message with id {} not found.", id);
+				return new ResponseEntity(new CustomErrorType("Unable to upate. Message with id " + id + " not found."),
+						HttpStatus.NOT_FOUND);
+			}
+
+			messageLocal.setContent(message.getContent());
+			
+			marketTipService.updateMessage(messageLocal);
+			return new ResponseEntity<Message>(messageLocal, HttpStatus.OK);
+		}
+	
+
+	// ------------------- Delete a message-----------------------------------------
+
+		@RequestMapping(value = "/messages/{id}", method = RequestMethod.DELETE)
+		public ResponseEntity<?> deleteMessage(@PathVariable("id") long id) {
+			logger.info("Fetching & Deleting Message with id {}", id);
+
+			Message message = marketTipService.findMessageById(id);
+			if (message == null) {
+				logger.error("Unable to delete. message with id {} not found.", id);
+				return new ResponseEntity(new CustomErrorType("Unable to delete. marketTip with id " + id + " not found."),
+						HttpStatus.NOT_FOUND);
+			}
+			marketTipService.deleteMessageById(id);
+			return new ResponseEntity<MarketTip>(HttpStatus.NO_CONTENT);
+		}
+	
 	// -------------------Create a marketTip-------------------------------------------
 
 	@RequestMapping(value = "/marketTip/", method = RequestMethod.POST)
@@ -105,6 +211,8 @@ public class RestApiController {
 		return new ResponseEntity<String>(headers, HttpStatus.CREATED);
 	}
 
+	
+	
 	// ------------------- Update a marketTip ------------------------------------------------
 
 	@RequestMapping(value = "/marketTip/{id}", method = RequestMethod.PUT)

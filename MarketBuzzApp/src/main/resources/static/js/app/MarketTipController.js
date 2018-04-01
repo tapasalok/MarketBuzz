@@ -8,13 +8,19 @@ angular.module('crudApp').controller('MarketTipController',
         self.marketTips=[];
 
         self.submit = submit;
+        self.saveMessage = saveMessage;
         self.getAllMarketTips = getAllMarketTips;
+        self.getAllMessages = getAllMessages;
         self.getMessages = getMessages;
         self.getAllActiveMarketTips = getAllActiveMarketTips;
+        self.createMessage = createMessage;
         self.createMarketTip = createMarketTip;
         self.updateMarketTip = updateMarketTip;
+        self.updateMessage = updateMessage;
         self.removeMarketTip = removeMarketTip;
+        self.removeMessage = removeMessage;
         self.editMarketTip = editMarketTip;
+        self.editMessage = editMessage;
         self.reset = reset;
 
         self.successMessage = '';
@@ -35,6 +41,38 @@ angular.module('crudApp').controller('MarketTipController',
             }
         }
 
+        function saveMessage() {
+            console.log('saveMessage Controller');
+            if (self.message.id === undefined || self.message.id === null) {
+                console.log('Saving New Message', self.message);
+                createMessage(self.message);
+            } else {
+                updateMessage(self.message, self.message.id);
+                console.log('Message updated with id ', self.message.id);
+            }
+        }
+        
+        
+        function createMessage(message) {
+            console.log('About to create Message');
+            MarketTipService.createMessage(message)
+                .then(
+                    function (response) {
+                        console.log('Message inserted successfully');
+                        self.successMessage = 'Message inserted successfully';
+                        self.errorMessage='';
+                        self.done = true;
+                        self.message={};
+                        $scope.myMessageForm.$setPristine();
+                    },
+                    function (errResponse) {
+                        console.error('Error while creating Message');
+                        self.errorMessage = 'Error while creating Message: ' + errResponse.data.errorMessage;
+                        self.successMessage='';
+                    }
+                );
+        }
+        
         function createMarketTip(marketTip) {
             console.log('About to create MarketTip');
             MarketTipService.createMarketTip(marketTip)
@@ -56,6 +94,26 @@ angular.module('crudApp').controller('MarketTipController',
         }
 
 
+        function updateMessage(message, id){
+            console.log('About to update Message');
+            MarketTipService.updateMessage(message, id)
+                .then(
+                    function (response){
+                        console.log('Message updated successfully');
+                        self.successMessage='Message updated successfully';
+                        self.errorMessage='';
+                        self.done = true;
+                        $scope.myMessageForm.$setPristine();
+                    },
+                    function(errResponse){
+                        console.error('Error while updating Message');
+                        self.errorMessage='Error while updating Message '+errResponse.data;
+                        self.successMessage='';
+                    }
+                );
+        }
+
+        
         function updateMarketTip(marketTip, id){
             console.log('About to update MarketTip');
             MarketTipService.updateMarketTip(marketTip, id)
@@ -88,10 +146,27 @@ angular.module('crudApp').controller('MarketTipController',
                     }
                 );
         }
+        
+        function removeMessage(id){
+            console.log('About to remove Message with id '+id);
+            MarketTipService.removeMessage(id)
+                .then(
+                    function(){
+                        console.log('Message '+id + ' removed successfully');
+                    },
+                    function(errResponse){
+                        console.error('Error while removing Message '+id +', Error :'+errResponse.data);
+                    }
+                );
+        }
 
 
         function getAllMarketTips(){
             return MarketTipService.getAllMarketTips();
+        }
+        
+        function getAllMessages(){
+            return MarketTipService.getAllMessages();
         }
         
         function getMessages(){
@@ -115,6 +190,20 @@ angular.module('crudApp').controller('MarketTipController',
                 }
             );
         }
+        
+        function editMessage(id) {
+            self.successMessage='';
+            self.errorMessage='';
+            MarketTipService.getMessage(id).then(
+                function (message) {
+                    self.message = message;
+                },
+                function (errResponse) {
+                    console.error('Error while removing Message ' + id + ', Error :' + errResponse.data);
+                }
+            );
+        }
+        
         function reset(){
             self.successMessage='';
             self.errorMessage='';

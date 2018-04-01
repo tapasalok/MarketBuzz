@@ -15,4 +15,6 @@ public interface MarketTipRepository extends JpaRepository<MarketTip, Long> {
     
     List<MarketTip> findByStatusNotLike(String status , Sort sort);
 
+    List<MarketTip> findByCallType(String status , Sort sort);
+    
 }

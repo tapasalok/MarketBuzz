@@ -22,7 +22,7 @@ public class MarketTipServiceImpl implements MarketTipService{
 
 	@Autowired
 	private MarketTipRepository marketTipRepository;
-
+	
 	@Autowired
 	private MessageRepository messageRepository;
 	
@@ -30,6 +30,10 @@ public class MarketTipServiceImpl implements MarketTipService{
 		return marketTipRepository.findOne(id);
 	}
 
+	public Message findMessageById(Long id) {
+		return messageRepository.findOne(id);
+	}
+	
 	public MarketTip findByName(String name) {
 		return marketTipRepository.findByName(name);
 	}
@@ -37,13 +41,25 @@ public class MarketTipServiceImpl implements MarketTipService{
 	public void saveMarketTip(MarketTip marketTip) {
 		marketTipRepository.save(marketTip);
 	}
+	
+	public void saveMessage(Message message) {
+		messageRepository.save(message);
+	}
 
 	public void updateMarketTip(MarketTip marketTip){
 		saveMarketTip(marketTip);
 	}
+	
+	public void updateMessage(Message message){
+		saveMessage(message);
+	}
 
 	public void deleteMarketTipById(Long id){
 		marketTipRepository.delete(id);
+	}
+	
+	public void deleteMessageById(Long id){
+		messageRepository.delete(id);
 	}
 
 	public void deleteAllMarketTips(){
@@ -62,6 +78,11 @@ public class MarketTipServiceImpl implements MarketTipService{
 	public List<MarketTip> findAllActiveMarketTips(){
 		return marketTipRepository.findByStatusNotLike("InActive", sortByIdAscDesc());
 	}
+	
+	public List<MarketTip> finalAllByCallType(final String string){
+		return marketTipRepository.findByCallType(string, sortByIdAscDesc());
+	}
+	
 	
 	public boolean isMarketTipExist(MarketTip marketTip) {
 		return findByName(marketTip.getName()) != null;

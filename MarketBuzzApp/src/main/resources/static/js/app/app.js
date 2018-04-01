@@ -22,7 +22,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
                         console.log('Load all MarketTips');
                         var deferred = $q.defer();
                         MarketTipService.loadAllActiveMarketTips().then(deferred.resolve, deferred.resolve);
-                        MarketTipService.getAllMessages().then(deferred.resolve, deferred.resolve);
+                        MarketTipService.loadAllMessages().then(deferred.resolve, deferred.resolve);
                         return deferred.promise;
                     }
                 }
@@ -36,7 +36,21 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
                         console.log('Load all MarketTips');
                         var deferred = $q.defer();
 //                        MarketTipService.loadAllActiveMarketTips().then(deferred.resolve, deferred.resolve);
-                        MarketTipService.getAllMessages().then(deferred.resolve, deferred.resolve);
+                        MarketTipService.loadAllMessages().then(deferred.resolve, deferred.resolve);
+                        return deferred.promise;
+                    }
+                }
+            }).state('messages', {
+                url: '/messages',
+                templateUrl: '/partials/messages',
+                controller:'MarketTipController',
+                controllerAs:'ctrl',
+                resolve: {
+                	marketTips: function ($q, MarketTipService) {
+                        console.log('Load all MarketTips');
+                        var deferred = $q.defer();
+//                        MarketTipService.loadAllActiveMarketTips().then(deferred.resolve, deferred.resolve);
+                        MarketTipService.loadAllMessages().then(deferred.resolve, deferred.resolve);
                         return deferred.promise;
                     }
                 }
@@ -50,7 +64,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
                         console.log('Load all MarketTips');
                         var deferred = $q.defer();
 //                        MarketTipService.loadAllActiveMarketTips().then(deferred.resolve, deferred.resolve);
-                        MarketTipService.getAllMessages().then(deferred.resolve, deferred.resolve);
+                        MarketTipService.loadAllMessages().then(deferred.resolve, deferred.resolve);
                         return deferred.promise;
                     }
                 }
@@ -64,7 +78,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
                         console.log('Load all MarketTips');
                         var deferred = $q.defer();
 //                        MarketTipService.loadAllActiveMarketTips().then(deferred.resolve, deferred.resolve);
-                        MarketTipService.getAllMessages().then(deferred.resolve, deferred.resolve);
+                        MarketTipService.loadAllMessages().then(deferred.resolve, deferred.resolve);
                         return deferred.promise;
                     }
                 }
@@ -78,7 +92,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
                         console.log('Load all MarketTips');
                         var deferred = $q.defer();
 //                        MarketTipService.loadAllActiveMarketTips().then(deferred.resolve, deferred.resolve);
-                        MarketTipService.getAllMessages().then(deferred.resolve, deferred.resolve);
+                        MarketTipService.loadAllMessages().then(deferred.resolve, deferred.resolve);
                         return deferred.promise;
                     }
                 }
@@ -92,7 +106,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
                         console.log('Load all MarketTips');
                         var deferred = $q.defer();
 //                        MarketTipService.loadAllActiveMarketTips().then(deferred.resolve, deferred.resolve);
-                        MarketTipService.getAllMessages().then(deferred.resolve, deferred.resolve);
+                        MarketTipService.loadAllMessages().then(deferred.resolve, deferred.resolve);
                         return deferred.promise;
                     }
                 }
@@ -106,7 +120,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
                         console.log('Load all MarketTips');
                         var deferred = $q.defer();
 //                        MarketTipService.loadAllActiveMarketTips().then(deferred.resolve, deferred.resolve);
-                        MarketTipService.getAllMessages().then(deferred.resolve, deferred.resolve);
+                        MarketTipService.loadAllMessages().then(deferred.resolve, deferred.resolve);
                         return deferred.promise;
                     }
                 }

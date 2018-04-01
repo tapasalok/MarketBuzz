@@ -31,11 +31,14 @@
 								Type</label>
 							<div class="col-md-7">
 								<select ng-model="ctrl.marketTip.callType" id="callType"
-									class="form-control input-sm" required ng-maxlength="4">
+									class="form-control input-sm" required ng-maxlength="20">
 									<option value="" disabled selected>Select Call Type
 										(Buy/Sell)</option>
 									<option value="Buy">Buy</option>
 									<option value="Sell">Sell</option>
+									<option value="Short Term Buy">Short Term Buy</option>
+									<option value="Long Term Buy">Long Term Buy</option>
+									<option value="Multibagger Buy">Multibagger Buy</option>
 								</select>
 							</div>
 						</div>
