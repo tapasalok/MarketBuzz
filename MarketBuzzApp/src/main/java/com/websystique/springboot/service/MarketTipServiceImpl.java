@@ -89,7 +89,7 @@ public class MarketTipServiceImpl implements MarketTipService{
 	}
 	
 	private Sort sortByIdAscDesc() {
-        return new Sort(Sort.Direction.DESC, "callDate");
+        return new Sort(Sort.Direction.DESC, "id");
     }
 
 	public static Specification extendedCarSearch() {
