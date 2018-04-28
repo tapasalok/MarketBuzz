@@ -3,10 +3,10 @@
 var app = angular.module('crudApp',['ui.router','ngStorage']);
 
 app.constant('urls', {
-	BASE: 'http://www.gotostock.club',
-    MARKET_TIP_SERVICE_API : 'http://www.gotostock.club/api/marketTip/',
-    MARKET_ACTIVE_TIP_SERVICE_API : 'http://www.gotostock.club/api/activeMarketTip/',
-    MESSAGES_SERVICE_API : 'http://www.gotostock.club/api/messages/',
+	BASE: 'http://localhost:8080',
+    MARKET_TIP_SERVICE_API : 'http://localhost:8080/api/marketTip/',
+    MARKET_ACTIVE_TIP_SERVICE_API : 'http://localhost:8080/api/activeMarketTip/',
+    MESSAGES_SERVICE_API : 'http://localhost:8080/api/messages/',
 
 });
 
@@ -14,7 +14,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
     function($stateProvider, $urlRouterProvider, $locationProvider) {
 	    $stateProvider.state('home', {
                 url: '/',
-                templateUrl: '/partials/list',
+                templateUrl: '/partials/admin',
                 controller:'MarketTipController',
                 controllerAs:'ctrl',
                 resolve: {
