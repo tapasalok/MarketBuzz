@@ -17,4 +17,6 @@ public interface MarketTipRepository extends JpaRepository<MarketTip, Long> {
 
     List<MarketTip> findByCallType(String status , Sort sort);
     
+    List<MarketTip> findByCallTypeIn(List<String> callTypes , Sort sort);
+    
 }

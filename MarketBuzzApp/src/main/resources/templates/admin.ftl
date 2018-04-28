@@ -34,8 +34,8 @@
 									class="form-control input-sm" required ng-maxlength="20">
 									<option value="" disabled selected>Select Call Type
 										(Buy/Sell)</option>
-									<option value="Buy">Buy</option>
-									<option value="Sell">Sell</option>
+									<option value="Intraday Buy">Intraday Buy</option>
+									<option value="Intraday Sell">Intraday Sell</option>
 									<option value="Short Term Buy">Short Term Buy</option>
 									<option value="Long Term Buy">Long Term Buy</option>
 									<option value="Multibagger Buy">Multibagger Buy</option>
@@ -131,6 +131,7 @@
 									<option value="Target Met">Target Met</option>
 									<option value="InActive">InActive</option>
 									<option value="SL Hit">SL Hit</option>
+									<option value="Partial Booking">Partial Booking</option>
 								</select>
 							</div>
 						</div>
@@ -229,7 +230,7 @@
 					</thead>
 					<tbody>
 						<tr
-							ng-repeat="u in ctrl.getAllMarketTips() | filter: marketTip | orderBy:'-callDate'">
+							ng-repeat="u in ctrl.getAllMarketTips() | filter: marketTip | orderBy:'-id'">
 							<td>{{u.id}}</td>
 							<td>{{u.name}}</td>
 							<td>{{u.callType}}</td>

@@ -96,7 +96,7 @@ public class RestApiController {
 			return new ResponseEntity<List<MarketTip>>(marketTips, HttpStatus.OK);
 		}
 		
-		// -------------------Retrieve All Short Term MarketTips---------------------------------------------
+		// -------------------Retrieve All Multibagger MarketTips---------------------------------------------
 		@RequestMapping(value = "/multibaggerMarketTip/", method = RequestMethod.GET)
 		public ResponseEntity<List<MarketTip>> listAllMultiBaggerMarketTips() {
 			List<MarketTip> marketTips = marketTipService.finalAllByCallType("Multibagger Buy");
@@ -107,6 +107,42 @@ public class RestApiController {
 			return new ResponseEntity<List<MarketTip>>(marketTips, HttpStatus.OK);
 		}
 	
+	// -------------------Retrieve All intradayBuyMarketTip MarketTips---------------------------------------------
+		@RequestMapping(value = "/intradayBuyMarketTip/", method = RequestMethod.GET)
+		public ResponseEntity<List<MarketTip>> listAllIntradayBuyMarketTips() {
+			List<MarketTip> marketTips = marketTipService.finalAllByCallType("Intraday Buy");
+			if (marketTips.isEmpty()) {
+				return new ResponseEntity(HttpStatus.NO_CONTENT);
+				// You many decide to return HttpStatus.NOT_FOUND
+			}
+			return new ResponseEntity<List<MarketTip>>(marketTips, HttpStatus.OK);
+		}
+		
+	// -------------------Retrieve All intradaySellMarketTip MarketTips---------------------------------------------
+		@RequestMapping(value = "/intradaySellMarketTip/", method = RequestMethod.GET)
+		public ResponseEntity<List<MarketTip>> listAllIntradaySellMarketTips() {
+			List<MarketTip> marketTips = marketTipService.finalAllByCallType("Intraday Sell");
+			if (marketTips.isEmpty()) {
+				return new ResponseEntity(HttpStatus.NO_CONTENT);
+				// You many decide to return HttpStatus.NOT_FOUND
+			}
+			return new ResponseEntity<List<MarketTip>>(marketTips, HttpStatus.OK);
+		}
+	
+		// -------------------Retrieve All intradayMarketTip MarketTips---------------------------------------------
+		@RequestMapping(value = "/intradayMarketTip/", method = RequestMethod.GET)
+		public ResponseEntity<List<MarketTip>> listAllIntradayMarketTips() {
+			List<String> callTypes = new ArrayList<>();
+			callTypes.add("Intraday Buy");
+			callTypes.add("Intraday Sell");
+			List<MarketTip> marketTips = marketTipService.finalAllByCallTypeIn(callTypes);
+			if (marketTips.isEmpty()) {
+				return new ResponseEntity(HttpStatus.NO_CONTENT);
+				// You many decide to return HttpStatus.NOT_FOUND
+			}
+			return new ResponseEntity<List<MarketTip>>(marketTips, HttpStatus.OK);
+		}
+		
 	// -------------------Retrieve Single marketTip------------------------------------------
 
 	@RequestMapping(value = "/marketTip/{id}", method = RequestMethod.GET)

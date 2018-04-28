@@ -83,6 +83,10 @@ public class MarketTipServiceImpl implements MarketTipService{
 		return marketTipRepository.findByCallType(string, sortByIdAscDesc());
 	}
 	
+	public List<MarketTip> finalAllByCallTypeIn(final List<String> callTypes){
+		return marketTipRepository.findByCallTypeIn(callTypes, sortByIdAscDesc());
+	}
+	
 	
 	public boolean isMarketTipExist(MarketTip marketTip) {
 		return findByName(marketTip.getName()) != null;

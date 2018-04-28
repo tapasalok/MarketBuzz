@@ -61,6 +61,7 @@
 		        <table class="table table-hover" id="table_list">
 		            <thead>
 		            <tr>
+		            	<th>REC ID</th>
 		            	<th>DATE</th>
 		                <th>STOCK</th>
 		                <th>CALL</th>
@@ -74,7 +75,8 @@
 		            </tr>
 		            </thead>
 		            <tbody>
-		            <tr ng-repeat="u in ctrl.getAllActiveMarketTips() | filter: marketTip | orderBy:'-callDate'">
+		            <tr ng-repeat="u in ctrl.getAllActiveMarketTips() | filter: marketTip | orderBy:'-id'">
+		                <td>{{u.id}}</td>
 		                <td>{{u.callDate}}</td>
 		                <td>{{u.name}}</td>
 	                 	<td>{{u.callType}}</td>

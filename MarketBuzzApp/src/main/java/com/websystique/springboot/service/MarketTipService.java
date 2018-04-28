@@ -36,5 +36,7 @@ public interface MarketTipService {
 	
 	List<MarketTip> finalAllByCallType(final String string);
 	
+	List<MarketTip> finalAllByCallTypeIn(final List<String> callTypes);
+	
 	boolean isMarketTipExist(MarketTip marketTip);
 }
