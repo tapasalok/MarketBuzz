@@ -77,7 +77,11 @@ public class RestApiController {
 	// -------------------Retrieve All Short Term MarketTips---------------------------------------------
 		@RequestMapping(value = "/shortMarketTip/", method = RequestMethod.GET)
 		public ResponseEntity<List<MarketTip>> listAllShortMarketTips() {
-			List<MarketTip> marketTips = marketTipService.finalAllByCallType("Short Term Buy");
+			List<String> callTypes = new ArrayList<>();
+			callTypes.add("Short Term Buy");
+			callTypes.add("Short Term Sell");
+			List<MarketTip> marketTips = marketTipService.finalAllByCallTypeIn(callTypes);
+//			List<MarketTip> marketTips = marketTipService.finalAllByCallType("Short Term Buy");
 			if (marketTips.isEmpty()) {
 				return new ResponseEntity(HttpStatus.NO_CONTENT);
 				// You many decide to return HttpStatus.NOT_FOUND
