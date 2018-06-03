@@ -17,7 +17,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.apache.commons.lang3.StringUtils;
 import org.hibernate.validator.constraints.NotEmpty;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 @Entity
 @Table(name = "MARKET_TIP_06_03_2018")
@@ -52,7 +55,7 @@ public class MarketTip implements Serializable {
 
 	@Column(name = "DAYHIGH", nullable = true)
 	private Double dayHigh;
-	
+
 	@Column(name = "DURATION", nullable = false)
 	private String duration;
 
@@ -64,9 +67,7 @@ public class MarketTip implements Serializable {
 
 	@Column(name = "REALTIME", nullable = false)
 	private String realTime;
-	
-	
-	
+
 	public Long getId() {
 		return id;
 	}
@@ -135,9 +136,8 @@ public class MarketTip implements Serializable {
 		Double currentPriceBackUp = currentPrice;
 		try {
 			if ("Active".equalsIgnoreCase(this.status) && "Y".equalsIgnoreCase(this.realTime)) {
-				String currentPriceFromNSE = getStockPriceFromNSE(getName());
-				currentPrice = Double.parseDouble(currentPriceFromNSE);
-			} 	
+				getStockPriceFromNSEAndSQual(getName());
+			}
 		} catch (Exception e) {
 			// TODO: handle exception
 			currentPrice = currentPriceBackUp;
@@ -148,8 +148,8 @@ public class MarketTip implements Serializable {
 	public void setCurrentPrice(Double currentPrice) {
 		this.currentPrice = currentPrice;
 	}
-	
-	private String getStockPriceFromNSE(String quoteName) {
+
+	private void getStockPriceFromNSEAndSQual(String quoteName) {
 		// Make a URL to the web page
 		String currentPriceFromNSE = null;
 		try {
@@ -157,7 +157,7 @@ public class MarketTip implements Serializable {
 			String line = null;
 
 			url = new URL("https://www.nseindia.com/live_market/dynaContent/live_watch/get_quote/GetQuote.jsp?symbol="
-					+ quoteName + "&illiquid=0&smeFlag=0&itpFlag=0");
+					+ quoteName);
 
 			// Get the input stream through URL Connection
 			URLConnection con = url.openConnection();
@@ -170,24 +170,71 @@ public class MarketTip implements Serializable {
 				// System.out.println(line);
 				currentPriceFromNSE = currentPriceFromNSE + "\n" + line;
 			}
-			
-			
+
 			int firstIndexDayHigh = currentPriceFromNSE.indexOf("\",\"dayHigh\":\"");
 			int endIndexDayHigh = currentPriceFromNSE.indexOf("\",\"exDate\":\"");
-//			System.out.println("==============" + firstIndex);
-//			System.out.println("==============" + endIndex);
-			String returnLine = currentPriceFromNSE.substring(firstIndexDayHigh + 13, endIndexDayHigh);
-			returnLine = returnLine.replaceAll(",", "");
-			
-			setDayHigh(Double.parseDouble(returnLine));
-			
-			
+			String dayHighString = currentPriceFromNSE.substring(firstIndexDayHigh + 13, endIndexDayHigh);
+
+			if (!StringUtils.isEmpty(dayHighString)) {
+				dayHighString = dayHighString.replaceAll(",", "");
+				setDayHigh(Double.parseDouble(dayHighString));
+			}
+
 			int firstIndex = currentPriceFromNSE.indexOf(",\"lastPrice\":\"");
 			int endIndex = currentPriceFromNSE.indexOf("\",\"pChange\":\"");
-//			System.out.println("==============" + firstIndex);
-//			System.out.println("==============" + endIndex);
 			currentPriceFromNSE = currentPriceFromNSE.substring(firstIndex + 14, endIndex);
-			currentPriceFromNSE = currentPriceFromNSE.replaceAll(",", "");
+
+			if (!StringUtils.isEmpty(currentPriceFromNSE)) {
+				currentPriceFromNSE = currentPriceFromNSE.replaceAll(",", "");
+				setCurrentPrice(Double.parseDouble(currentPriceFromNSE));
+			}
+		} catch (MalformedURLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			getCurrentFromQual(quoteName);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			getCurrentFromQual(quoteName);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			getCurrentFromQual(quoteName);
+		}
+	}
+
+	public void getCurrentFromQual(String quoteName) {
+		// Make a URL to the web page
+		String returnLine = "";
+		String line = null;
+		try {
+			URL url;
+			url = new URL("https://www.quandl.com/api/v3/datasets/NSE/" + quoteName
+					+ ".json?api_key=S9DEPsWt4fHYXVx18rSm&limit=1");
+
+			// Get the input stream through URL Connection
+			URLConnection con = url.openConnection();
+			InputStream is = con.getInputStream();
+
+			BufferedReader br = new BufferedReader(new InputStreamReader(is));
+
+			// read each line and write to System.out
+			while ((line = br.readLine()) != null) {
+				// System.out.println(line);
+				returnLine = returnLine + "\n" + line;
+			}
+
+			JSONObject obj = new JSONObject(returnLine);
+			JSONObject jsonObject = obj.getJSONObject("dataset");
+
+			JSONArray arr = jsonObject.getJSONArray("data");
+
+			JSONArray array = arr.getJSONArray(0);
+
+			setDayHigh(array.getDouble(2));
+
+			setCurrentPrice(array.getDouble(4));
+
 		} catch (MalformedURLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -199,10 +246,7 @@ public class MarketTip implements Serializable {
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-
 		}
-		
-		return currentPriceFromNSE;
 	}
 
 	public Double getProfit() {
@@ -215,7 +259,6 @@ public class MarketTip implements Serializable {
 		DecimalFormat df = new DecimalFormat("#.##");
 		profitValue = Double.valueOf(df.format(profitValue));
 		return profitValue;
-
 	}
 
 	public void setProfit(Double profit) {
@@ -257,8 +300,6 @@ public class MarketTip implements Serializable {
 		this.status = tempStatus;
 	}
 
-	
-	
 	public String getRealTime() {
 		return realTime;
 	}
@@ -266,26 +307,26 @@ public class MarketTip implements Serializable {
 	public void setRealTime(String realTime) {
 		this.realTime = realTime;
 	}
-	
+
 	public Double getDayHigh() {
-//		Double dayHighBackUp = dayHigh;
-//		try {
-//			if ("Active".equalsIgnoreCase(this.status) && "Y".equalsIgnoreCase(this.realTime)) {
-//				String currentPriceFromNSE = getStockDayHigh(getName());
-//				currentPrice = Double.parseDouble(currentPriceFromNSE);
-//			} 	
-//		} catch (Exception e) {
-//			// TODO: handle exception
-//			dayHigh = dayHighBackUp;
-//		}
+		// Double dayHighBackUp = dayHigh;
+		// try {
+		// if ("Active".equalsIgnoreCase(this.status) &&
+		// "Y".equalsIgnoreCase(this.realTime)) {
+		// String currentPriceFromNSE = getStockDayHigh(getName());
+		// currentPrice = Double.parseDouble(currentPriceFromNSE);
+		// }
+		// } catch (Exception e) {
+		// // TODO: handle exception
+		// dayHigh = dayHighBackUp;
+		// }
 		return dayHigh;
 	}
 
 	public void setDayHigh(Double dayHigh) {
 		this.dayHigh = dayHigh;
 	}
-	
-	
+
 	public static String getStockDayHigh(String quoteName) {
 		// Make a URL to the web page
 		String returnLine = null;
@@ -307,13 +348,11 @@ public class MarketTip implements Serializable {
 				// System.out.println(line);
 				returnLine = returnLine + "\n" + line;
 			}
-			
-//			System.out.println(returnLine);
-			
+
+			// System.out.println(returnLine);
+
 			int firstIndex = returnLine.indexOf("\",\"dayHigh\":\"");
 			int endIndex = returnLine.indexOf("\",\"exDate\":\"");
-//			System.out.println("==============" + firstIndex);
-//			System.out.println("==============" + endIndex);
 			returnLine = returnLine.substring(firstIndex + 13, endIndex);
 			returnLine = returnLine.replaceAll(",", "");
 		} catch (MalformedURLException e) {
@@ -396,7 +435,8 @@ public class MarketTip implements Serializable {
 	public String toString() {
 		return "MarketTip [id=" + id + ", name=" + name + ", callType=" + callType + ", triggerPrice=" + triggerPrice
 				+ ", currentPrice=" + currentPrice + ", profit=" + profit + ", targetPrice=" + targetPrice
-				+ ", stopLoss=" + stopLoss + ", duration=" + duration + ", callDate=" + callDate + ", status=" + status + ", realTime=" + realTime + ", dayHigh=" + dayHigh + "]";
+				+ ", stopLoss=" + stopLoss + ", duration=" + duration + ", callDate=" + callDate + ", status=" + status
+				+ ", realTime=" + realTime + ", dayHigh=" + dayHigh + "]";
 	}
 
 }
