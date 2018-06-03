@@ -268,8 +268,10 @@ public class RestApiController {
 		}
 
 		marketTipLocal.setName(marketTip.getName());
+		marketTipLocal.setRealTime(marketTip.getRealTime());
 		marketTipLocal.setTriggerPrice(marketTip.getTriggerPrice());
 		marketTipLocal.setCurrentPrice(marketTip.getCurrentPrice());
+		marketTipLocal.setDayHigh(marketTip.getDayHigh());
 		marketTipLocal.setProfit(marketTip.getProfit());
 		marketTipLocal.setTargetPrice(marketTip.getTargetPrice());
 		marketTipLocal.setCallType(marketTip.getCallType());
