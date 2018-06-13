@@ -191,7 +191,8 @@
   font-family: 'Oswald', sans-serif;
 }
 
-#link_bar a { padding:5px; font-weight:bold; float:left; }
+#link_bar a {font-size:20px; padding:15px; font-weight:bold; float:center; }
+#zerodha a { padding:15px; font-weight:bold; float:center; }
 #link_bar a:link { color:#d0d0d0; background-color:#0000a0; }
 #link_bar a:visited { color:#c0c0c0; background-color:#0000a0; }
 #link_bar a:hover { color:#ffffff; background-color:#000060; }

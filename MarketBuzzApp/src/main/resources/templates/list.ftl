@@ -1,5 +1,5 @@
 <div class="generic-container">
-    <div class="panel panel-default">
+    <div class="panel panel-default" style="text-align: center">
         <!-- Default panel contents -->
         <div class="panel-heading"><span class="lead">GoToStock (Happy Investment. Happy Trading!)</span></div>
         <ul style="color:#2b8341; font-size:16px; margin: 10px; font-weight:bold;">
@@ -13,8 +13,19 @@
 				<table style="padding-left: 12px" class="table table-hover" id="table_messages">
 		            <tbody>
 		            <tr ng-repeat="u in ctrl.getMessages()">
-		                <td style="font-size: 12px;color: #2b8341; font-weight:normal; padding-left: 12px;">{{u.content}} </td>
-		                <div align="center" style="padding-left: 14px" id="link_bar"> <a href="https://api.whatsapp.com/send?phone=916361059258&text=REGISTERWEB">Click here and message to receive Stock updates</a> </div>
+		                <td align="center" style="font-size: 12px;color: #2b8341; font-weight:normal; padding-left: 12px;">{{u.content}} </td>
+		            </tr>
+		            <br>
+		            <br>
+		            <tr>
+		                <td align="center" id="link_bar">
+                       	<a  href="https://api.whatsapp.com/send?phone=916361059258&text=REGISTERWEB">Click here and message to receive Stock updates</a>
+                        </td>
+                    <tr>  
+                    <tr>  
+                        <td align="center" >
+                        <a href="https://zerodha.com/open-account?c=ZMPAVT" target="_blank"><img src="/css/images/open-zerodha-account.png"></a>
+                    	</td>
 		            </tr>
 		            </tbody>
 		        </table>

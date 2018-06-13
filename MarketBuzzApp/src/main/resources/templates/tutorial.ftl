@@ -17,10 +17,12 @@
 				  
 				  <li style="color: #2b4b83; font-size:20px; font-weight:normal;">Get added to the WhatsApp and Telegram Link by clicking on the below link so as to get the updates on the spot</li>
 				  <li style="color: #2b8341; font-size:20px; font-weight:bold;">*Note: Only members who have added number (+91-6361059258) to their phone's address book will receive broadcast message.</li>
-				</ul>  
+				</ul>
+				<br>
+				<br>  
 				<div align="center" style="padding-left: 10px" id="link_bar"> <a style="font-weight:bold;" href="https://api.whatsapp.com/send?phone=916361059258&text=REGISTERWEB">Click here and message to receive Stock updates</a> </div>
-					</br>
-					</br>
+					<br>
+					<br>
 					<label style="color:#827272; margin: 10px; font-weight:normal">For any further queries, please mail us at gotostocks@gmail.com</label>
 			</div>
 		</div>
