@@ -19,12 +19,12 @@
 		            <br>
 		            <tr>
 		                <td align="center" id="link_bar">
-                       	<a  href="https://api.whatsapp.com/send?phone=916361059258&text=REGISTERWEB">Click here and message to receive Stock updates</a>
+                       	<a  href="https://api.whatsapp.com/send?phone=916361059258&text=REGISTERWEB">Click here to message and receive updates</a>
                         </td>
                     <tr>  
                     <tr>  
                         <td align="center" >
-                        <a href="https://zerodha.com/open-account?c=ZMPAVT" target="_blank"><img src="/css/images/open-zerodha-account.png"></a>
+                        <a href="https://zerodha.com/iframe-form/?id=zmpavt" target="_blank"><img src="/css/images/open-zerodha-account.png"></a>
                     	</td>
 		            </tr>
 		            </tbody>
