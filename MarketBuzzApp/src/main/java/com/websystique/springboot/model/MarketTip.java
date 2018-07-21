@@ -22,6 +22,8 @@ import org.hibernate.validator.constraints.NotEmpty;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import com.websystique.springboot.util.Constants;
+
 @Entity
 @Table(name = "MARKET_TIP_06_03_2018")
 public class MarketTip implements Serializable {
@@ -152,6 +154,10 @@ public class MarketTip implements Serializable {
 	private void getStockPriceFromNSEAndSQual(String quoteName) {
 		// Make a URL to the web page
 		String currentPriceFromNSE = null;
+		URLConnection con = null;
+		InputStream is = null;
+
+		BufferedReader br = null;
 		try {
 			URL url;
 			String line = null;
@@ -160,10 +166,10 @@ public class MarketTip implements Serializable {
 					+ quoteName);
 
 			// Get the input stream through URL Connection
-			URLConnection con = url.openConnection();
-			InputStream is = con.getInputStream();
+			con = url.openConnection();
+			is = con.getInputStream();
 
-			BufferedReader br = new BufferedReader(new InputStreamReader(is));
+			br = new BufferedReader(new InputStreamReader(is));
 
 			// read each line and write to System.out
 			while ((line = br.readLine()) != null) {
@@ -200,6 +206,15 @@ public class MarketTip implements Serializable {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			getCurrentFromQual(quoteName);
+		}finally{
+			try {
+				br.close();
+				is.close();
+				con = null;
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 	}
 
@@ -207,16 +222,19 @@ public class MarketTip implements Serializable {
 		// Make a URL to the web page
 		String returnLine = "";
 		String line = null;
+		URLConnection con = null;
+		InputStream is = null;
+		BufferedReader br = null;
 		try {
 			URL url;
 			url = new URL("https://www.quandl.com/api/v3/datasets/NSE/" + quoteName
-					+ ".json?api_key=S9DEPsWt4fHYXVx18rSm&limit=1");
+					+ ".json?api_key="+Constants.SQUAL_API_KEY+"&limit=1");
 
 			// Get the input stream through URL Connection
-			URLConnection con = url.openConnection();
-			InputStream is = con.getInputStream();
+			con = url.openConnection();
+			is = con.getInputStream();
 
-			BufferedReader br = new BufferedReader(new InputStreamReader(is));
+			br = new BufferedReader(new InputStreamReader(is));
 
 			// read each line and write to System.out
 			while ((line = br.readLine()) != null) {
@@ -246,6 +264,16 @@ public class MarketTip implements Serializable {
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}finally{
+			try {
+				br.close();
+				is.close();
+				con = null;
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
 		}
 	}
 

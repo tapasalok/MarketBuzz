@@ -9,5 +9,7 @@ import com.websystique.springboot.model.Message;
 public interface MessageRepository extends JpaRepository<Message, Long> {
 
 	Message findByContent(String content);
+	
+	Message findByUrl(String url);
 
 }

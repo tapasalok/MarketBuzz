@@ -20,11 +20,26 @@
 							<div class="col-md-7">
 								<input type="text" ng-model="ctrl.marketTip.name" id="uname"
 									class="username form-control input-sm"
-									placeholder="Enter Stock Name" required ng-minlength="3" />
+									placeholder="Enter Stock Name" required ng-minlength="1" />
 							</div>
 						</div>
 					</div>
 
+					<div class="row">
+						<div class="form-group col-md-12">
+							<label class="col-md-2 control-lable" for="realTime">Real Time</label>
+							<div class="col-md-7">
+								<select ng-model="ctrl.marketTip.realTime" id="realTime"
+									class="form-control input-sm" required ng-minlength="1">
+									<option value="" disabled selected>Select Real Time
+										(Y/N)</option>
+									<option value="Y">Y</option>
+									<option value="N">N</option>
+								</select>
+							</div>
+						</div>
+					</div>
+					
 					<div class="row">
 						<div class="form-group col-md-12">
 							<label class="col-md-2 control-lable" for="callType">Call
@@ -37,7 +52,9 @@
 									<option value="Intraday Buy">Intraday Buy</option>
 									<option value="Intraday Sell">Intraday Sell</option>
 									<option value="Short Term Buy">Short Term Buy</option>
+									<option value="Short Term Sell">Short Term Sell</option>
 									<option value="Long Term Buy">Long Term Buy</option>
+									<option value="Long Term Sell">Long Term Sell</option>
 									<option value="Multibagger Buy">Multibagger Buy</option>
 								</select>
 							</div>
@@ -90,6 +107,18 @@
 								<input type="text" ng-model="ctrl.marketTip.stopLoss"
 									id="stopLoss" class="form-control input-sm"
 									placeholder="Enter Stop Loss." required
+									ng-pattern="ctrl.onlyNumbers" />
+							</div>
+						</div>
+					</div>
+
+				<div class="row">
+						<div class="form-group col-md-12">
+							<label class="col-md-2 control-lable" for="dayHigh">Day High</label>
+							<div class="col-md-7">
+								<input type="text" ng-model="ctrl.marketTip.dayHigh"
+									id="stopLoss" class="form-control input-sm"
+									placeholder="Enter Day High." required
 									ng-pattern="ctrl.onlyNumbers" />
 							</div>
 						</div>
@@ -160,13 +189,23 @@
 		<div class="panel-body">
 			<div class="table-responsive">
 				<!-- <b style="font-family: 'Oswald', sans-serif;color: #0000FF; size: 30px;">Please type below to Search</b> -->
-				 </br> </br>
+				<!--  </br> </br>
 				<div class="row">
 					<div class="form-group col-md-12">
 						<label class="col-md-2 control-lable">STOCK NAME :</label>
 						<div class="col-md-7">
 							<input type="text" ng-model="marketTip.name"
 								class="form-control input-sm" placeholder="Enter Stock Name" />
+						</div>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="form-group col-md-12">
+						<label class="col-md-2 control-lable">Real Time :</label>
+						<div class="col-md-7">
+							<input type="text" ng-model="marketTip.realTime"
+								class="form-control input-sm" placeholder="Real Time" />
 						</div>
 					</div>
 				</div>
@@ -209,7 +248,7 @@
 								class="form-control input-sm" placeholder="Enter Status (Active/Target Met)" />
 						</div>
 					</div>
-				</div>
+				</div> -->
 
 				</br> </br>
 				<table class="table table-hover">
@@ -217,8 +256,10 @@
 						<tr>
 							<th>ID</th>
 							<th>STOCK NAME</th>
+							<th>REAL TIME</th>
 							<th>CALL TYPE</th>
 							<th>CMP</th>
+							<th>DAY HIGH</th>
 							<th>TRIGGER</th>
 							<th>TARGET</th>
 							<th>SL</th>
@@ -233,8 +274,10 @@
 							ng-repeat="u in ctrl.getAllMarketTips() | filter: marketTip | orderBy:'-id'">
 							<td>{{u.id}}</td>
 							<td>{{u.name}}</td>
+							<td>{{u.realTime}}</td>
 							<td>{{u.callType}}</td>
 							<td>{{u.currentPrice}}</td>
+							<td>{{u.dayHigh}}</td>
 							<td>{{u.triggerPrice}}</td>
 							<td>{{u.targetPrice}}</td>
 							<td>{{u.stopLoss}}</td>

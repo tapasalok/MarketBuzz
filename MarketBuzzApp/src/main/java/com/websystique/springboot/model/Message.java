@@ -23,6 +23,10 @@ public class Message implements Serializable {
 	@NotEmpty
 	@Column(name = "CONTENT", nullable = false)
 	private String content;
+	
+	@NotEmpty
+	@Column(name = "URL", nullable = false)
+	private String url;
 
 	public Long getId() {
 		return id;
@@ -40,6 +44,14 @@ public class Message implements Serializable {
 		this.content = content;
 	}
 
+	public String getUrl() {
+		return url;
+	}
+
+	public void setUrl(String url) {
+		this.url = url;
+	}
+	
 	@Override
 	public boolean equals(Object o) {
 		if (this == o)
@@ -53,6 +65,8 @@ public class Message implements Serializable {
 			return false;
 		if (content != null ? !content.equals(message.content) : message.content != null)
 			return false;
+		if (url != null ? !url.equals(message.url) : message.url != null)
+			return false;
 
 		return true;
 	}
@@ -62,12 +76,13 @@ public class Message implements Serializable {
 		int result;
 		result = id != null ? id.hashCode() : 0;
 		result = 31 * result + (content != null ? content.hashCode() : 0);
+		result = 31 * result + (url != null ? url.hashCode() : 0);
 		return result;
 	}
 
 	@Override
 	public String toString() {
-		return "Message [id=" + id + ", content=" + content + "]";
+		return "Message [id=" + id + ", content=" + content + ", url=" + url +"]";
 	}
 
 }

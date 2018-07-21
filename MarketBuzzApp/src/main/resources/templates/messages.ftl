@@ -21,6 +21,17 @@
 					</div>
 					
 					<div class="row">
+						<div class="form-group col-md-12">
+							<label class="col-md-2 control-lable" for="url">Message URL</label>
+							<div class="col-md-7">
+								<input type="text" ng-model="ctrl.message.url" id="url"
+									class="username form-control input-sm"
+									placeholder="Enter Message" required ng-minlength="3" />
+							</div>
+						</div>
+					</div>
+					
+					<div class="row">
 						<div class="form-actions floatRight">
 							<input type="submit"
 								value="{{!ctrl.message.id ? 'Add' : 'Update'}}"
@@ -54,6 +65,16 @@
 						</div>
 					</div>
 				</div>
+				
+				<div class="row">
+					<div class="form-group col-md-12">
+						<label class="col-md-2 control-lable">URL :</label>
+						<div class="col-md-7">
+							<input type="text" ng-model="message.url"
+								class="form-control input-sm" placeholder="Enter URL" />
+						</div>
+					</div>
+				</div>
 
 				</br> </br>
 				<table class="table table-hover">
@@ -61,6 +82,7 @@
 						<tr>
 							<th>ID</th>
 							<th>MESSAGE</th>
+							<th>URL</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -68,6 +90,7 @@
 							ng-repeat="u in ctrl.getAllMessages() | filter: message | orderBy:'-id'">
 							<td>{{u.id}}</td>
 							<td>{{u.content}}</td>
+							<td>{{u.url}}</td>
 							<td><button type="button"
 									ng-click="ctrl.editMessage(u.id)"
 									class="btn btn-success custom-width">Edit</button></td>

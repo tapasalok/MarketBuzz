@@ -199,7 +199,7 @@ public class RestApiController {
 
 		@RequestMapping(value = "/messages/{id}", method = RequestMethod.PUT)
 		public ResponseEntity<?> updateMessage(@PathVariable("id") long id, @RequestBody Message message) {
-			logger.info("Updating marketTip with id {}", id);
+			logger.info("Updating message with id {}", id);
 
 			Message messageLocal = marketTipService.findMessageById(id);
 
@@ -210,6 +210,7 @@ public class RestApiController {
 			}
 
 			messageLocal.setContent(message.getContent());
+			messageLocal.setUrl(message.getUrl());
 			
 			marketTipService.updateMessage(messageLocal);
 			return new ResponseEntity<Message>(messageLocal, HttpStatus.OK);
