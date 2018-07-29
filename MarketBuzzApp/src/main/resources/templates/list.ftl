@@ -13,13 +13,13 @@
 				<table style="padding-left: 12px" class="table table-hover" id="table_messages">
 		            <tbody>
 		            <tr ng-repeat="u in ctrl.getMessages()">
-		                <td align="center" style="font-size: 12px;color: #2b8341; font-weight:normal; padding-left: 12px;">{{u.content}} </td>
+		                <td align="center" style="font-size: 12px;color: #2b8341; font-weight:normal; padding-left: 12px;"><a  href="{{u.url}}" target="_blank" >{{u.content}}</a></td>
 		            </tr>
 		            <br>
 		            <br>
 		            <tr>
 		                <td align="center" id="link_bar">
-                       	<a  href="https://api.whatsapp.com/send?phone=916361059258&text=REGISTERWEB">Click here to message and receive updates</a>
+                       	<a  href="https://api.whatsapp.com/send?phone=916361059258&text=REGISTERWEB" target="_blank">Click here to message and receive updates</a>
                         </td>
                     <tr>  
                     <tr>  
