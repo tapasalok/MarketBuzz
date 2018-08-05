@@ -40,6 +40,16 @@ public class RestApiController {
 		 
 	}
 	
+	@RequestMapping(value = "/students/", method = RequestMethod.GET)
+	public ResponseEntity<List<Student>> getStudents() {
+		List<Student> messages = marketTipService.getStudents();
+		if (messages.isEmpty()) {
+			return new ResponseEntity(HttpStatus.NO_CONTENT);
+			// You many decide to return HttpStatus.NOT_FOUND
+		}
+		return new ResponseEntity<List<Student>>(messages, HttpStatus.OK);
+		 
+	}
 	
 	// -------------------Create a Message-------------------------------------------
 	

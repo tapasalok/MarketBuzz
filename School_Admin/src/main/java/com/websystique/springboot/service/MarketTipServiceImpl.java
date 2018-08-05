@@ -58,6 +58,10 @@ public class MarketTipServiceImpl implements MarketTipService{
 		return messageRepository.findAll();
 	}
 	
+	public List<Student> getStudents(){
+		return studentRepository.findAll();
+	}
+	
 	private Sort sortByIdAscDesc() {
         return new Sort(Sort.Direction.DESC, "id");
     }

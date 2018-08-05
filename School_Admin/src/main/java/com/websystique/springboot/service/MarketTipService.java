@@ -19,4 +19,5 @@ public interface MarketTipService {
 
 	List<Message> getMessages();
 
+	List<Student> getStudents();
 }
