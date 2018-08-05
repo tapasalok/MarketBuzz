@@ -3,10 +3,10 @@
 var app = angular.module('crudApp',['ui.router','ngStorage']);
 
 app.constant('urls', {
-	BASE: 'http://localhost:8080',
-    MARKET_TIP_SERVICE_API : 'http://localhost:8080/api/marketTip/',
-    MARKET_ACTIVE_TIP_SERVICE_API : 'http://localhost:8080/api/activeMarketTip/',
-    MESSAGES_SERVICE_API : 'http://localhost:8080/api/messages/',
+	BASE: 'http://ec2-13-232-46-215.ap-south-1.compute.amazonaws.com:8080',
+    MARKET_TIP_SERVICE_API : 'http://ec2-13-232-46-215.ap-south-1.compute.amazonaws.com:8080/api/marketTip/',
+    MARKET_ACTIVE_TIP_SERVICE_API : 'http://ec2-13-232-46-215.ap-south-1.compute.amazonaws.com:8080/api/activeMarketTip/',
+    MESSAGES_SERVICE_API : 'http://ec2-13-232-46-215.ap-south-1.compute.amazonaws.com:8080/api/messages/',
 
 });
 

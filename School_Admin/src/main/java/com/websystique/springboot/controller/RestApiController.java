@@ -1,6 +1,5 @@
 package com.websystique.springboot.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -16,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
-import com.websystique.springboot.model.MarketTip;
 import com.websystique.springboot.model.Message;
 import com.websystique.springboot.model.Student;
 import com.websystique.springboot.service.MarketTipService;
@@ -131,7 +129,7 @@ public class RestApiController {
 						HttpStatus.NOT_FOUND);
 			}
 			marketTipService.deleteMessageById(id);
-			return new ResponseEntity<MarketTip>(HttpStatus.NO_CONTENT);
+			return new ResponseEntity<Message>(HttpStatus.NO_CONTENT);
 		}
 
 }
