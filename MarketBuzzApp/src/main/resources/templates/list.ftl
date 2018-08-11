@@ -24,9 +24,16 @@
                     <tr>  
                     <tr>  
                         <td align="center" >
-                        <a href="https://zerodha.com/open-account?c=ZMPAVT" target="_blank"><img src="/css/images/open-zerodha-account.png"></a>
+                        <a href="https://zerodha.com/iframe-form/?id=zmpavt" target="_blank"><img src="/css/images/open-zerodha-account.png"></a>
                     	</td>
 		            </tr>
+		            
+		            <tr>  
+                        <td align="center" >
+                        <a href="http://upstox.com/open-account/?f=99JV" target="_blank"><img src="/css/images/open-upstox-account.png"></a>
+                    	</td>
+		            </tr>
+		            
 		            </tbody>
 		        </table>
 				
@@ -39,7 +46,7 @@
 				</div> -->
 			
 				
-				<div class="row">
+				<!-- <div class="row">
 					<div class="form-group col-md-12">
 						<label class="col-md-2 control-lable">STOCK NAME :</label>
 						<div class="col-md-7">
@@ -47,9 +54,9 @@
 								class="form-control input-sm" placeholder="Enter Stock Name" />
 						</div>
 					</div>
-				</div>
+				</div> -->
 
-				<div class="row">
+				<!-- <div class="row">
 					<div class="form-group col-md-12">
 						<label class="col-md-2 control-lable">CALL TYPE :</label>
 						<div class="col-md-7">
@@ -57,9 +64,9 @@
 								class="form-control input-sm" placeholder="Enter Buy/Sell" />
 						</div>
 					</div>
-				</div>
+				</div> -->
 
-				<div class="row">
+				<!-- <div class="row">
 					<div class="form-group col-md-12">
 						<label class="col-md-2 control-lable">STATUS :</label>
 						<div class="col-md-7">
@@ -67,8 +74,8 @@
 								class="form-control input-sm" placeholder="Enter Status (Active/Target Met)" />
 						</div>
 					</div>
-				</div>
-				<div style="padding-left: 12px"><span style="font-size: 20px;">Recommended Stocks</span></div>
+				</div> -->
+				<!-- <div style="padding-left: 12px"><span style="font-size: 20px;">Recommended Stocks</span></div>
 		        <table class="table table-hover" id="table_list">
 		            <thead>
 		            <tr>
@@ -100,7 +107,7 @@
 		                <td>{{u.status}}</td>
 		            </tr>
 		            </tbody>
-		        </table>		
+		        </table>	 -->	
 			</div>
 		</div>
     </div>
