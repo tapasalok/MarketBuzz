@@ -24,7 +24,7 @@
                     <tr>  
                     <tr>  
                         <td align="center" >
-                        <a href="https://zerodha.com/iframe-form/?id=zmpavt" target="_blank"><img src="/css/images/open-zerodha-account.png"></a>
+                        <a href="https://zerodha.com/open-account?c=ZMPAVT" target="_blank"><img src="/css/images/open-zerodha-account.png"></a>
                     	</td>
 		            </tr>
 		            
