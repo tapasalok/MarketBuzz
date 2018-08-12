@@ -20,6 +20,7 @@ import com.websystique.springboot.model.MarketTip;
 import com.websystique.springboot.model.Message;
 import com.websystique.springboot.service.MarketTipService;
 import com.websystique.springboot.util.CustomErrorType;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 @RestController
 @RequestMapping("/api")
@@ -41,8 +42,9 @@ public class RestApiController {
 		}
 		return new ResponseEntity<List<MarketTip>>(marketTips, HttpStatus.OK);
 	}
-
+	
 	@RequestMapping(value = "/messages/", method = RequestMethod.GET)
+	@CrossOrigin(origins = {"http://localhost:4200", "http://www.gotostock.club"})
 	public ResponseEntity<List<Message>> getMessages() {
 		List<Message> messages = marketTipService.getMessages();
 		if (messages.isEmpty()) {
@@ -164,6 +166,7 @@ public class RestApiController {
 	// -------------------Create a Message-------------------------------------------
 	
 	@RequestMapping(value = "/messages/", method = RequestMethod.POST)
+	@CrossOrigin(origins = {"http://localhost:4200", "http://www.gotostock.club"})
 	public ResponseEntity<?> createMessage(@RequestBody Message message, UriComponentsBuilder ucBuilder) {
 		logger.info("Creating message : {}", message);
 
@@ -183,6 +186,7 @@ public class RestApiController {
 	// -------------------Retrieve Single message------------------------------------------
 
 		@RequestMapping(value = "/messages/{id}", method = RequestMethod.GET)
+		@CrossOrigin(origins = {"http://localhost:4200", "http://www.gotostock.club"})
 		public ResponseEntity<?> getMessage(@PathVariable("id") long id) {
 			logger.info("Fetching Message with id {}", id);
 			Message message = marketTipService.findMessageById(id);
@@ -198,6 +202,7 @@ public class RestApiController {
 		// ------------------- Update a message ------------------------------------------------
 
 		@RequestMapping(value = "/messages/{id}", method = RequestMethod.PUT)
+		@CrossOrigin(origins = {"http://localhost:4200", "http://www.gotostock.club"})
 		public ResponseEntity<?> updateMessage(@PathVariable("id") long id, @RequestBody Message message) {
 			logger.info("Updating message with id {}", id);
 
@@ -218,7 +223,7 @@ public class RestApiController {
 	
 
 	// ------------------- Delete a message-----------------------------------------
-
+		@CrossOrigin(origins = {"http://localhost:4200", "http://www.gotostock.club"})
 		@RequestMapping(value = "/messages/{id}", method = RequestMethod.DELETE)
 		public ResponseEntity<?> deleteMessage(@PathVariable("id") long id) {
 			logger.info("Fetching & Deleting Message with id {}", id);
