@@ -19,18 +19,18 @@
 		            <br>
 		            <tr>
 		                <td align="center" id="link_bar">
-                       	<a  href="https://api.whatsapp.com/send?phone=916361059258&text=REGISTERWEB" target="_blank">Click here to message and receive updates</a>
+                       	<a  href="https://api.whatsapp.com/send?phone=916361059258&text=REGISTERWEB" target="_blank"><img src="/css/images/click_here_message.gif"></a>
                         </td>
                     <tr>  
                     <tr>  
                         <td align="center" >
-                        <a href="https://zerodha.com/open-account?c=ZMPAVT" target="_blank"><img src="/css/images/open-zerodha-account.png"></a>
+                        <a href="https://zerodha.com/open-account?c=ZMPAVT" target="_blank"><img src="/css/images/open-zerodha-account.gif"></a>
                     	</td>
 		            </tr>
 		            
 		            <tr>  
                         <td align="center" >
-                        <a href="http://upstox.com/open-account/?f=99JV" target="_blank"><img src="/css/images/open-upstox-account.png"></a>
+                        <a href="http://upstox.com/open-account/?f=99JV" target="_blank"><img src="/css/images/open-upstox-account.gif"></a>
                     	</td>
 		            </tr>
 		            
