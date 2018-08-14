@@ -2,17 +2,20 @@ package com.websystique.springboot.service;
 
 import java.util.List;
 
-import com.websystique.springboot.model.MarketTip;
-import com.websystique.springboot.model.Message;
-import com.websystique.springboot.repositories.MarketTipRepository;
-import com.websystique.springboot.repositories.MessageRepository;
-
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.data.jpa.domain.Specifications;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import com.websystique.springboot.model.MarketTip;
+import com.websystique.springboot.model.Message;
+import com.websystique.springboot.model.User;
+import com.websystique.springboot.repositories.MarketTipRepository;
+import com.websystique.springboot.repositories.MessageRepository;
+import com.websystique.springboot.repositories.UserRepository;
 
 
 
@@ -25,6 +28,9 @@ public class MarketTipServiceImpl implements MarketTipService{
 	
 	@Autowired
 	private MessageRepository messageRepository;
+	
+	@Autowired
+	private UserRepository userRepository;
 	
 	public MarketTip findById(Long id) {
 		return marketTipRepository.findOne(id);
@@ -46,12 +52,26 @@ public class MarketTipServiceImpl implements MarketTipService{
 		messageRepository.save(message);
 	}
 
+//	Update the User if same email id exists
+	@Override
+	public void saveUser(User user) {
+		User userFromDB = findByEmail(user.getEmail());
+		if (userFromDB !=null) {
+			user.setId(userFromDB.getId());
+		}
+		userRepository.save(user);
+	}
+	
 	public void updateMarketTip(MarketTip marketTip){
 		saveMarketTip(marketTip);
 	}
 	
 	public void updateMessage(Message message){
 		saveMessage(message);
+	}
+	
+	public void updateUser(User user){
+		saveUser(user);
 	}
 
 	public void deleteMarketTipById(Long id){
@@ -74,6 +94,9 @@ public class MarketTipServiceImpl implements MarketTipService{
 		return messageRepository.findAll();
 	}
 
+	public List<User> getUsers(){
+		return userRepository.findAll();
+	}
 	
 	public List<MarketTip> findAllActiveMarketTips(){
 		return marketTipRepository.findByStatusNotLike("InActive", sortByIdAscDesc());
@@ -87,6 +110,14 @@ public class MarketTipServiceImpl implements MarketTipService{
 		return marketTipRepository.findByCallTypeIn(callTypes, sortByIdAscDesc());
 	}
 	
+	public boolean isUserExist(User user) {
+		return findByEmail(user.getEmail()) != null;
+	}
+	
+	public User findByEmail(String email) {
+		return userRepository.findByEmail(email);
+	}
+
 	
 	public boolean isMarketTipExist(MarketTip marketTip) {
 		return findByName(marketTip.getName()) != null;
@@ -103,4 +134,12 @@ public class MarketTipServiceImpl implements MarketTipService{
 	public static Specification containsLike(String attribute, String value) {
         return (root, query, cb) -> cb.like(root.get(attribute), "%" + value + "%");
     }
+
+	@Override
+	public User findUserByEmail(String email) {
+		// TODO Auto-generated method stub
+		return userRepository.findByEmail(email);
+	}
+
+	
 }

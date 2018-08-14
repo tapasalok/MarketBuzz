@@ -1,7 +1,6 @@
 package com.websystique.springboot.model;
 
 import java.io.Serializable;
-import java.text.DecimalFormat;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

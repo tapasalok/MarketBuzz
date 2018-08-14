@@ -18,6 +18,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 import com.websystique.springboot.model.MarketTip;
 import com.websystique.springboot.model.Message;
+import com.websystique.springboot.model.User;
 import com.websystique.springboot.service.MarketTipService;
 import com.websystique.springboot.util.CustomErrorType;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -43,6 +44,29 @@ public class RestApiController {
 		return new ResponseEntity<List<MarketTip>>(marketTips, HttpStatus.OK);
 	}
 	
+	// -------------------Retrieve All Users---------------------------------------------
+		@RequestMapping(value = "/users/", method = RequestMethod.GET)
+		public ResponseEntity<List<User>> getUsers() {
+			List<User> users = marketTipService.getUsers();
+			if (users.isEmpty()) {
+				return new ResponseEntity(HttpStatus.NO_CONTENT);
+				// You many decide to return HttpStatus.NOT_FOUND
+			}
+			return new ResponseEntity<List<User>>(users, HttpStatus.OK);
+			
+			
+//			logger.info("Called getMessages : ");
+//			List<Message> messages = new ArrayList<>();
+//			Message message = new Message();
+//			message.setId(1L);
+//			message.setContent("Send WhatsApp Message “REGISTER <YOUR NAME>” to number (+91-6361059258) to receive Stock updates / tips daily. ");
+//			
+//			messages.add(message);
+//			return new ResponseEntity<List<Message>>(messages, HttpStatus.OK);
+			 
+		}
+	
+	// -------------------Retrieve All Messages---------------------------------------------
 	@RequestMapping(value = "/messages/", method = RequestMethod.GET)
 	@CrossOrigin(origins = {"http://localhost:4200", "http://www.gotostock.club"})
 	public ResponseEntity<List<Message>> getMessages() {
@@ -182,6 +206,25 @@ public class RestApiController {
 		headers.setLocation(ucBuilder.path("/api/messages/{id}").buildAndExpand(message.getId()).toUri());
 		return new ResponseEntity<String>(headers, HttpStatus.CREATED);
 	}
+	
+	// -------------------Create a User-------------------------------------------
+	
+		@RequestMapping(value = "/user/", method = RequestMethod.POST)
+		public ResponseEntity<?> createUser(@RequestBody User user, UriComponentsBuilder ucBuilder) {
+			logger.info("Creating user : {}", user);
+				
+//			Removing to add same stocks for multiple Calls
+//			if (marketTipService.isMarketTipExist(marketTip)) {
+//				logger.error("Unable to create. A marketTip with name {} already exist", marketTip.getName());
+//				return new ResponseEntity(new CustomErrorType("Unable to create. A marketTip with name " + 
+//				marketTip.getName() + " already exist."),HttpStatus.CONFLICT);
+//			}
+			marketTipService.saveUser(user);
+
+			HttpHeaders headers = new HttpHeaders();
+			headers.setLocation(ucBuilder.path("/api/user/{id}").buildAndExpand(user.getId()).toUri());
+			return new ResponseEntity<String>(headers, HttpStatus.CREATED);
+		}
 	
 	// -------------------Retrieve Single message------------------------------------------
 
