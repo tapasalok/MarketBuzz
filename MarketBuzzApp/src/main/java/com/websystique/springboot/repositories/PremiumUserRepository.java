@@ -23,5 +23,7 @@ public interface PremiumUserRepository extends JpaRepository<PremiumUser, Long> 
 	PremiumUser findByImei(String imei);
 	
 	PremiumUser findByImsi(String imsi);
+	
+	PremiumUser findByLastLoginDate(String lastLoginDate);
 
 }

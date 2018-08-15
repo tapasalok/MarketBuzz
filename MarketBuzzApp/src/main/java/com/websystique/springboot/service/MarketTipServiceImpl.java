@@ -64,15 +64,15 @@ public class MarketTipServiceImpl implements MarketTipService {
 			}
 		}
 
-		List<PremiumUser> premiumUser2 = findByPremiumUserEmail(premiumUser.getEmail());
-		if (premiumUser2 != null && !premiumUser2.isEmpty()) {
-			if (checkIfExistsAndEqual(premiumUser, premiumUser2)) {
+		List<PremiumUser> alreadyPresentPremium = findByPremiumUserEmail(premiumUser.getEmail());
+		if (alreadyPresentPremium == null || alreadyPresentPremium.isEmpty()) {
+			premiumUserRepository.save(premiumUser);
+		}else{
+			if (checkIfExistsAndEqual(premiumUser, alreadyPresentPremium)) {
 				// Do Nothing
 			} else {
 				premiumUserRepository.save(premiumUser);
 			}
-		} else {
-			premiumUserRepository.save(premiumUser);
 		}
 	}
 
@@ -83,8 +83,26 @@ public class MarketTipServiceImpl implements MarketTipService {
 					&& individualPremium.getDisplayName().equalsIgnoreCase(premiumUser.getDisplayName())
 					&& individualPremium.getUid().equalsIgnoreCase(premiumUser.getUid())
 					&& individualPremium.getUuid().equalsIgnoreCase(premiumUser.getUuid())) {
-				returnValue = true;
-				break;
+				
+				if (StringUtils.isEmpty(premiumUser.getImei())) {
+					returnValue = true;
+					break;
+				}
+				
+				if (StringUtils.isEmpty(premiumUser.getImsi())) {
+					returnValue = true;
+					break;
+				}
+				
+				if (!StringUtils.isEmpty(premiumUser.getImei()) && premiumUser.getImei().equalsIgnoreCase(individualPremium.getImei()) ) {
+					returnValue = true;
+					break;
+				}
+				
+				if (!StringUtils.isEmpty(premiumUser.getImsi()) && premiumUser.getImsi().equalsIgnoreCase(individualPremium.getImsi()) ) {
+					returnValue = true;
+					break;
+				}
 			}
 		}
 		return returnValue;

@@ -38,6 +38,10 @@ public class PremiumUser implements Serializable {
 	@Column(name = "UUID", nullable = false)
 	private String uuid;
 	
+	@NotEmpty
+	@Column(name = "LASTLOGINDATE", nullable = false)
+	private String lastLoginDate;
+	
 	@Column(name = "IMEI", nullable = true)
 	private String imei;
 	
@@ -108,6 +112,16 @@ public class PremiumUser implements Serializable {
 		this.phoneNumber = phoneNumber;
 	}
 
+	
+	
+	public String getLastLoginDate() {
+		return lastLoginDate;
+	}
+
+	public void setLastLoginDate(String lastLoginDate) {
+		this.lastLoginDate = lastLoginDate;
+	}
+
 	@Override
 	public boolean equals(Object o) {
 		if (this == o)
@@ -133,6 +147,8 @@ public class PremiumUser implements Serializable {
 			return false;
 		if (imsi != null ? !imsi.equals(message.imsi) : message.imsi != null)
 			return false;
+		if (lastLoginDate != null ? !lastLoginDate.equals(message.lastLoginDate) : message.lastLoginDate != null)
+			return false;
 		
 		return true;
 	}
@@ -148,12 +164,14 @@ public class PremiumUser implements Serializable {
 		result = 31 * result + (uuid != null ? uuid.hashCode() : 0);
 		result = 31 * result + (imei != null ? imei.hashCode() : 0);
 		result = 31 * result + (imsi != null ? imsi.hashCode() : 0);
+		result = 31 * result + (lastLoginDate != null ? lastLoginDate.hashCode() : 0);
+		
 		return result;
 	}
 
 	@Override
 	public String toString() {
-		return "PrimeUser [id=" + id + ", email=" + email + ", displayName=" + displayName +", phoneNumber=" + phoneNumber +", UID=" + uid +", UUID=" + uuid +", IMEI=" + imei +", IMSI=" + imsi +"]";
+		return "PrimeUser [id=" + id + ", email=" + email + ", displayName=" + displayName +", phoneNumber=" + phoneNumber +", uid=" + uid +", uuid=" + uuid +", imei=" + imei +", imsi=" + imsi +", lastLoginDate=" + lastLoginDate +"]";
 	}
 
 }
