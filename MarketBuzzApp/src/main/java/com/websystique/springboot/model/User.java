@@ -31,6 +31,11 @@ public class User implements Serializable {
 	@Column(name = "PHONENUMBER", nullable = false)
 	private String phoneNumber;
 	
+	@Column(name = "FIRSTNAME", nullable = true)
+	private String firstName;
+	
+	@Column(name = "FAMILYNAME", nullable = true)
+	private String familyName;
 	
 	public Long getId() {
 		return id;
@@ -63,6 +68,24 @@ public class User implements Serializable {
 	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
+	
+	
+
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public String getFamilyName() {
+		return familyName;
+	}
+
+	public void setFamilyName(String familyName) {
+		this.familyName = familyName;
+	}
 
 	@Override
 	public boolean equals(Object o) {
@@ -81,6 +104,10 @@ public class User implements Serializable {
 			return false;
 		if (phoneNumber != null ? !phoneNumber.equals(message.phoneNumber) : message.phoneNumber != null)
 			return false;
+		if (firstName != null ? !firstName.equals(message.firstName) : message.firstName != null)
+			return false;
+		if (familyName != null ? !familyName.equals(message.familyName) : message.familyName != null)
+			return false;
 		
 		return true;
 	}
@@ -92,12 +119,14 @@ public class User implements Serializable {
 		result = 31 * result + (email != null ? email.hashCode() : 0);
 		result = 31 * result + (displayName != null ? displayName.hashCode() : 0);
 		result = 31 * result + (phoneNumber != null ? phoneNumber.hashCode() : 0);
+		result = 31 * result + (firstName != null ? firstName.hashCode() : 0);
+		result = 31 * result + (familyName != null ? familyName.hashCode() : 0);
 		return result;
 	}
 
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", email=" + email + ", displayName=" + displayName +", phoneNumber=" + phoneNumber +"]";
+		return "User [id=" + id + ", email=" + email + ", displayName=" + displayName +", phoneNumber=" + phoneNumber +", firstName=" + firstName +", familyName=" + familyName +"]";
 	}
 
 }
