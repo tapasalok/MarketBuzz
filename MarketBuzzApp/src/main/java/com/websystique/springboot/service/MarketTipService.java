@@ -3,6 +3,7 @@ package com.websystique.springboot.service;
 
 import com.websystique.springboot.model.MarketTip;
 import com.websystique.springboot.model.Message;
+import com.websystique.springboot.model.PremiumUser;
 import com.websystique.springboot.model.User;
 
 import java.util.List;
@@ -23,6 +24,8 @@ public interface MarketTipService {
 	
 	void saveUser(User user);
 	
+	void savePremiumUser(PremiumUser user);
+	
 	void updateMarketTip(MarketTip marketTip);
 
 	void updateMessage(Message message);
@@ -38,6 +41,8 @@ public interface MarketTipService {
 	List<Message> getMessages();
 	
 	List<User> getUsers();
+	
+	List<PremiumUser> getPremiumUsers();
 	
 	List<MarketTip> findAllActiveMarketTips();
 	
