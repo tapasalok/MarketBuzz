@@ -3,6 +3,7 @@ package com.websystique.springboot.service;
 import java.util.List;
 
 import org.apache.commons.lang3.StringUtils;
+import org.apache.http.util.TextUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.domain.Specification;
@@ -71,6 +72,11 @@ public class MarketTipServiceImpl implements MarketTipService {
 			if (checkIfExistsAndEqual(premiumUser, alreadyPresentPremium)) {
 				// Do Nothing
 			} else {
+				if (alreadyPresentPremium.size()==1 ) {
+					if (TextUtils.isEmpty(alreadyPresentPremium.get(0).getImei()) || TextUtils.isEmpty(alreadyPresentPremium.get(0).getImsi())) {
+						premiumUser.setId(alreadyPresentPremium.get(0).getId());
+					}
+				}
 				premiumUserRepository.save(premiumUser);
 			}
 		}
@@ -78,33 +84,40 @@ public class MarketTipServiceImpl implements MarketTipService {
 
 	private boolean checkIfExistsAndEqual(PremiumUser premiumUser, List<PremiumUser> premiumUser2) {
 		boolean returnValue = false;
-		for (PremiumUser individualPremium : premiumUser2) {
-			if (individualPremium.getEmail().equalsIgnoreCase(premiumUser.getEmail())
-					&& individualPremium.getDisplayName().equalsIgnoreCase(premiumUser.getDisplayName())
-					&& individualPremium.getUid().equalsIgnoreCase(premiumUser.getUid())
-					&& individualPremium.getUuid().equalsIgnoreCase(premiumUser.getUuid())) {
-				
-				if (StringUtils.isEmpty(premiumUser.getImei())) {
-					returnValue = true;
-					break;
-				}
-				
-				if (StringUtils.isEmpty(premiumUser.getImsi())) {
-					returnValue = true;
-					break;
-				}
-				
-				if (!StringUtils.isEmpty(premiumUser.getImei()) && premiumUser.getImei().equalsIgnoreCase(individualPremium.getImei()) ) {
-					returnValue = true;
-					break;
-				}
-				
-				if (!StringUtils.isEmpty(premiumUser.getImsi()) && premiumUser.getImsi().equalsIgnoreCase(individualPremium.getImsi()) ) {
-					returnValue = true;
-					break;
+		if (premiumUser2.size()==1 ) {
+			if (TextUtils.isEmpty(premiumUser2.get(0).getImei()) || TextUtils.isEmpty(premiumUser2.get(0).getImsi())) {
+				returnValue = false;
+			}
+		}else{
+			for (PremiumUser individualPremium : premiumUser2) {
+				if (individualPremium.getEmail().equalsIgnoreCase(premiumUser.getEmail())
+						&& individualPremium.getDisplayName().equalsIgnoreCase(premiumUser.getDisplayName())
+						&& individualPremium.getUid().equalsIgnoreCase(premiumUser.getUid())
+						&& individualPremium.getUuid().equalsIgnoreCase(premiumUser.getUuid())) {
+					
+					if (StringUtils.isEmpty(premiumUser.getImei())) {
+						returnValue = true;
+						break;
+					}
+					
+					if (StringUtils.isEmpty(premiumUser.getImsi())) {
+						returnValue = true;
+						break;
+					}
+					
+					if (!StringUtils.isEmpty(premiumUser.getImei()) && premiumUser.getImei().equalsIgnoreCase(individualPremium.getImei()) ) {
+						returnValue = true;
+						break;
+					}
+					
+					if (!StringUtils.isEmpty(premiumUser.getImsi()) && premiumUser.getImsi().equalsIgnoreCase(individualPremium.getImsi()) ) {
+						returnValue = true;
+						break;
+					}
 				}
 			}
 		}
+		
 		return returnValue;
 	}
 
