@@ -86,7 +86,11 @@ public class MarketTipServiceImpl implements MarketTipService {
 		boolean returnValue = false;
 		if (premiumUser2.size()==1 ) {
 			if (TextUtils.isEmpty(premiumUser2.get(0).getImei()) || TextUtils.isEmpty(premiumUser2.get(0).getImsi())) {
-				returnValue = false;
+				// Do Nothing returnValue is false
+			}else{
+				if (premiumUser2.get(0).getImei().equalsIgnoreCase(premiumUser.getImei()) && premiumUser2.get(0).getImsi().equalsIgnoreCase(premiumUser.getImsi())) {
+					returnValue = true;
+				}
 			}
 		}else{
 			for (PremiumUser individualPremium : premiumUser2) {
