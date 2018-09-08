@@ -70,7 +70,7 @@ public class RestApiController {
 	
 	// -------------------Retrieve All Messages---------------------------------------------
 	@RequestMapping(value = "/messages/", method = RequestMethod.GET)
-	@CrossOrigin(origins = {"http://localhost:4200", "http://www.gotostock.club"})
+	@CrossOrigin(origins = {"http://localhost:4200", "http://www.gotostock.club","http://localhost:8080"})
 	public ResponseEntity<List<Message>> getMessages() {
 		List<Message> messages = marketTipService.getMessages();
 		if (messages.isEmpty()) {
