@@ -131,6 +131,26 @@ public class MarketTipServiceImpl implements MarketTipService {
 		User userFromDB = findByEmail(user.getEmail());
 		if (userFromDB != null) {
 			user.setId(userFromDB.getId());
+			
+			if (StringUtils.isEmpty(user.getDisplayName())) {
+				user.setDisplayName(userFromDB.getDisplayName());
+			}
+			
+			if (StringUtils.isEmpty(user.getFirstName())) {
+				user.setFirstName(userFromDB.getFirstName());
+			}
+			
+			if (StringUtils.isEmpty(user.getFamilyName())) {
+				user.setFamilyName(userFromDB.getFamilyName());
+			}
+			
+			if (StringUtils.isEmpty(user.getPhoneNumber())) {
+				user.setPhoneNumber(userFromDB.getPhoneNumber());
+			}
+			
+			if (StringUtils.isEmpty(user.getType())) {
+				user.setType(userFromDB.getType());
+			}
 		}
 		userRepository.save(user);
 	}
