@@ -48,8 +48,6 @@ public class PremiumUser implements Serializable {
 	@Column(name = "IMSI", nullable = true)
 	private String imsi;
 	
-	@Column(name = "TYPE", nullable = true)
-	private String type;
 	
 	public Long getId() {
 		return id;
@@ -125,14 +123,6 @@ public class PremiumUser implements Serializable {
 		this.lastLoginDate = lastLoginDate;
 	}
 	
-	public String getType() {
-		return type;
-	}
-
-	public void setType(String type) {
-		this.type = type;
-	}
-
 	@Override
 	public boolean equals(Object o) {
 		if (this == o)
@@ -160,8 +150,6 @@ public class PremiumUser implements Serializable {
 			return false;
 		if (lastLoginDate != null ? !lastLoginDate.equals(message.lastLoginDate) : message.lastLoginDate != null)
 			return false;
-		if (type != null ? !type.equals(message.type) : message.type != null)
-			return false;
 		return true;
 	}
 
@@ -177,14 +165,13 @@ public class PremiumUser implements Serializable {
 		result = 31 * result + (imei != null ? imei.hashCode() : 0);
 		result = 31 * result + (imsi != null ? imsi.hashCode() : 0);
 		result = 31 * result + (lastLoginDate != null ? lastLoginDate.hashCode() : 0);
-		result = 31 * result + (type != null ? type.hashCode() : 0);
 		
 		return result;
 	}
 
 	@Override
 	public String toString() {
-		return "PrimeUser [id=" + id + ", email=" + email + ", displayName=" + displayName +", phoneNumber=" + phoneNumber +", uid=" + uid +", uuid=" + uuid +", imei=" + imei +", imsi=" + imsi +", lastLoginDate=" + lastLoginDate+", type=" + type +"]";
+		return "PrimeUser [id=" + id + ", email=" + email + ", displayName=" + displayName +", phoneNumber=" + phoneNumber +", uid=" + uid +", uuid=" + uuid +", imei=" + imei +", imsi=" + imsi +", lastLoginDate=" + lastLoginDate+"]";
 	}
 
 }

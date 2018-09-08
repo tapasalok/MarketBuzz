@@ -37,6 +37,9 @@ public class User implements Serializable {
 	@Column(name = "FAMILYNAME", nullable = true)
 	private String familyName;
 	
+	@Column(name = "TYPE", nullable = true)
+	private String type;
+	
 	public Long getId() {
 		return id;
 	}
@@ -86,6 +89,16 @@ public class User implements Serializable {
 	public void setFamilyName(String familyName) {
 		this.familyName = familyName;
 	}
+	
+	
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
 
 	@Override
 	public boolean equals(Object o) {
@@ -108,6 +121,8 @@ public class User implements Serializable {
 			return false;
 		if (familyName != null ? !familyName.equals(message.familyName) : message.familyName != null)
 			return false;
+		if (type != null ? !type.equals(message.type) : message.type != null)
+			return false;
 		
 		return true;
 	}
@@ -121,12 +136,13 @@ public class User implements Serializable {
 		result = 31 * result + (phoneNumber != null ? phoneNumber.hashCode() : 0);
 		result = 31 * result + (firstName != null ? firstName.hashCode() : 0);
 		result = 31 * result + (familyName != null ? familyName.hashCode() : 0);
+		result = 31 * result + (type != null ? type.hashCode() : 0);
 		return result;
 	}
 
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", email=" + email + ", displayName=" + displayName +", phoneNumber=" + phoneNumber +", firstName=" + firstName +", familyName=" + familyName +"]";
+		return "User [id=" + id + ", email=" + email + ", displayName=" + displayName +", phoneNumber=" + phoneNumber +", firstName=" + firstName +", familyName=" + familyName+", type=" + type +"]";
 	}
 
 }
