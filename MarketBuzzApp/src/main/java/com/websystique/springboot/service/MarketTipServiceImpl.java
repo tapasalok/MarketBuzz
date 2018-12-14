@@ -150,6 +150,8 @@ public class MarketTipServiceImpl implements MarketTipService {
 			
 			if (StringUtils.isEmpty(user.getType())) {
 				user.setType(userFromDB.getType());
+			}else if (!StringUtils.isEmpty(userFromDB.getType()) && !userFromDB.getType().contains(user.getType())) {
+				user.setType(userFromDB.getType()+","+user.getType());
 			}
 		}
 		userRepository.save(user);
