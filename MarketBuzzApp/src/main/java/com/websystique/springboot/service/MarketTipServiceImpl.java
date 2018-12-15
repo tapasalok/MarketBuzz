@@ -136,11 +136,11 @@ public class MarketTipServiceImpl implements MarketTipService {
 				user.setDisplayName(userFromDB.getDisplayName());
 			}
 			
-			if (StringUtils.isEmpty(userFromDB.getFirstName())) {
+			if (StringUtils.isNotEmpty(userFromDB.getFirstName())) {
 				user.setFirstName(userFromDB.getFirstName());
 			}
 			
-			if (StringUtils.isEmpty(userFromDB.getFamilyName())) {
+			if (StringUtils.isNotEmpty(userFromDB.getFamilyName())) {
 				user.setFamilyName(userFromDB.getFamilyName());
 			}
 			
